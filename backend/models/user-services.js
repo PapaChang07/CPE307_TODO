@@ -30,19 +30,19 @@ mongoose
 
   
 
-async function getUsers(name, job){
+async function getUsers(name, password){
     let result;
-    if (name === undefined && job === undefined){
+    if (name === undefined && password === undefined){
         result = await userModel.find();
     }
-    else if (name && !job) {
+    else if (name && !password) {
         result = await findUserByName(name);
     }
-    else if (job && !name){
-        result = await findUserByJob(job);
+    else if (password && !name){
+        result = await findUserByJob(password);
     }   
-    else if(job && name){
-        result = await findUserByNameandJob(name, job);
+    else if(password && name){
+        result = await findUserByNameandJob(name, password);
     }
     return result;  
 }
@@ -80,12 +80,12 @@ async function findUserByName(name){
     return await userModel.find({'name':name});
 }
 
-async function findUserByJob(job){
-    return await userModel.find({'job':job});
+async function findUserByJob(password){
+    return await userModel.find({'password':password});
 }
 
 async function findUserByNameandJob(name, job){
-    return await userModel.find({'job':job, 'name': name});
+    return await userModel.find({'password':password, 'name': name});
 }
 
 

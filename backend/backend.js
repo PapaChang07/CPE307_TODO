@@ -19,9 +19,9 @@ app.get('/', (req, res) => {
 
 app.get('/users', async (req, res) => {
     const name = req.query['name'];
-    const job = req.query['job'];
+    const password = req.query['password'];
     try {
-        const result = await userServices.getUsers(name, job);
+        const result = await userServices.getUsers(name, password);
         res.send({users_list: result});         
     } catch (error) {
         console.log(error);
