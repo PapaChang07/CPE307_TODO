@@ -6,13 +6,14 @@ const UserSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  job: {
-    type: String,
-    required: true,
-    trim: true,
-    validate(value) {
-      if (value.length < 2) throw new Error("Invalid job.");
+  password: {
+      type: String,
+      required: true,
+      trim: true,
     },
+  tasks: {
+    type: Array, 
+    required: false
   },
 }, {collection : 'users_list'});
 
