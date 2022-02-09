@@ -4,7 +4,7 @@ import List from "./components/List";
 import Todo from "./components/todo";
 import "./index.css";
 
-function MyApp(){
+function MyApp() {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
 
