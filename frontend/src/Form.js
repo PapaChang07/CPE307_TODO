@@ -8,7 +8,6 @@ function Form(props) {
      }
   );
 
-
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "password")
@@ -45,9 +44,6 @@ function submitForm() {
     props.handleSubmit(person);
     setPerson({name: '', password: ''});
   }
-
 }
-
-
 
 export default Form;
