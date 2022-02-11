@@ -15,6 +15,8 @@ const List = ({ input, setInput, todos, setTodos }) => {
     };
 
     //const { handleSubmit } = useForm();
+    const tasks = ["fix color scheme", "push code to Git", "finish Sprint 1", "brainstorm next steps"];
+    const taskItems = tasks.map((task) => <li className='list'>{task}</li>);
 
     return (
         <form onSubmit={onFormSubmit}>
@@ -28,6 +30,7 @@ const List = ({ input, setInput, todos, setTodos }) => {
                     onChange={onInputChange}
                 />
                 <Button className="button-add" type="submit">Add</Button>
+                <ul className="ul">{taskItems}</ul>
             </Form.Group>
         </form>
     )

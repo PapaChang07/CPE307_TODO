@@ -4,7 +4,7 @@
 }
 
 .container {
-  background: linear-gradient(to right bottom, #e1b382, #c89666);
+  background: #FFFEFE;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -13,19 +13,25 @@
 }
 
 .app-wrapper {
-  background-color: #12343b;
+  background-color: #1E3D59;
   min-width: 450px;
   min-height: 650px;
   padding: 30px;
   box-sizing: border-box;
   box-shadow: 3px 6px 40px #000;
-  margin-bottom: 10px;
+  border-radius: 1.5rem;
 }
 
 .header h1{
   color: #fff;
+  background-color: #1E3D59;
   text-align: center;
-  margin: 30px 0;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.header{
+  background-color: #1E3D59;
 }
 
 .task-input{
@@ -35,8 +41,8 @@
   margin-right: 25px;
   font-size: 20px;
   color: #ccc;
-  background-color: #000000;
-  border: 1px solid #c89666;
+  background-color: #FFFEFE;
+  border: 1px solid #000;
   border-radius: 10px;
 }
 
@@ -46,7 +52,7 @@
   font-size: 20px;
   border-radius: 10px;
   border: 0;
-  background-color: #f1af71;
+  background-color: #FF6E40;
   cursor: pointer;
 }
 
@@ -57,6 +63,16 @@
   border-radius: 10px;
   padding: 10px;
   max-height: 30px;
+}
+
+.ul{
+  padding-top: 5%;
+  padding-left: 5%;
+}
+
+.footer{
+  background-color: #FF6E40;
+  padding: 1%;
 }
 
 .button-complete,
@@ -71,7 +87,7 @@
 }
 
 .button-complete{
-  color: #ff6c6c;
+  color: #FF6E40;
   margin-right: 10px;
 }
 
@@ -93,12 +109,16 @@
 
 .list{
   width: 220px;
-  background-color: #12343b;
+  background-color: #1E3D59;
   border: none;
   color: #ccc;
   font-size: 20px;
   padding-left: 10px;
   margin-right: 15px;
+}
+
+.todo-list::marker{
+  color: #ccc;
 }
 
 input:focus,
