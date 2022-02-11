@@ -6,7 +6,7 @@
 .container {
   background: #FFFEFE;
   width: 100%;
-  min-height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@
 .app-wrapper {
   background-color: #1E3D59;
   min-width: 450px;
-  min-height: 650px;
+  min-height: 500px;
   padding: 30px;
   box-sizing: border-box;
   box-shadow: 3px 6px 40px #000;
@@ -26,12 +26,12 @@
   color: #fff;
   background-color: #1E3D59;
   text-align: center;
-  padding-top: 2%;
-  padding-bottom: 2%;
 }
 
 .header{
   background-color: #1E3D59;
+  padding: 1%;
+  min-height: 30px;
 }
 
 .task-input{
@@ -73,6 +73,7 @@
 .footer{
   background-color: #FF6E40;
   padding: 1%;
+  min-height: 30px;
 }
 
 .button-complete,
