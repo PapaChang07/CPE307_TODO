@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+
 import { Form, Button } from 'react-bootstrap';
 //import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+
 
 const List = ({ input, setInput, todos, setTodos }) => {
+    const [mytasks, setTasks] = useState([]);  
+
     const onInputChange = (event) => {
         setInput(event.target.value);
     };
@@ -14,9 +19,38 @@ const List = ({ input, setInput, todos, setTodos }) => {
         setInput("");
     };
 
+    async function fetchAll(){
+        try {
+           const response = await axios.get('http://localhost:5000/users');
+           //console.log(response);
+           return response.data.users_list;     
+        }
+        catch (error){
+           //We're not handling errors. Just logging into the console.
+           console.log(error); 
+           return false;         
+        }
+     }
+    useEffect(() => {
+        fetchAll().then( result => {
+           if (result){
+            setTasks(result);
+           }
+              
+         });
+     }, [] );
+     
+
     //const { handleSubmit } = useForm();
-    const tasks = ["fix color scheme", "push code to Git", "finish Sprint 1", "brainstorm next steps"];
-    const taskItems = tasks.map((task) => <li className='list'>{task}</li>);
+    
+    
+    let taskItems = [];
+
+    if(mytasks.length !== 0){
+ 
+        let user = mytasks.find(person => person.name === "Eric");
+        taskItems = user.tasks.map((task) => <li className='list'>{task.body}</li>);
+    }
 
     return (
         <form onSubmit={onFormSubmit}>

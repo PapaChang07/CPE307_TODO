@@ -19,4 +19,14 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", UserSchema);
 
+
+function Task(imp, flag, body, date) {
+  this.imp = imp;
+  this.flag = flag;
+  this.body = body;
+  this.date = date;
+
+}
+
+
 module.exports = User;
