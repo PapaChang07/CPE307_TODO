@@ -28,6 +28,12 @@
   text-align: center;
 }
 
+.login-header{
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
 .header{
   background-color: #1E3D59;
   padding: 1%;
@@ -46,8 +52,21 @@
   border-radius: 10px;
 }
 
-.button {
+.username{
+  outline: none;
+  width: 260px;
+  padding: 15px;
+  margin-right: 25px;
+  font-size: 20px;
+  color: #ccc;
+  background-color: #FFFEFE;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  align-self: center;
+}
 
+.button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
