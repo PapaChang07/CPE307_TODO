@@ -14,7 +14,7 @@ function MyApp() {
     <>
       <Row>
         <div className="header">
-          <Header/>
+          <Header />
         </div>
       </Row>
       <Row>
@@ -36,11 +36,11 @@ function MyApp() {
       </Row>
       <Row>
         <div className="footer-col col-md-4">
-          <Footer/>
+          <Footer />
         </div>
       </Row>
     </>
-  )
+  );
 }
 
 export default MyApp;
