@@ -22,6 +22,10 @@
   border-radius: 1.5rem;
 }
 
+.login-body{
+  color:#1E3D59;
+}
+
 .header h1{
   color: #fff;
   background-color: #1E3D59;
