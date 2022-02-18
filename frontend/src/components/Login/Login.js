@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Container, Form, Button, Row } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Container, Form, Button, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import "./Login.css";
@@ -19,13 +19,13 @@ function Login() {
   const navigate = useNavigate();
   const handleSubmit = () => {
     console.log("listview");
-    navigate('/listview');
-  }
+    navigate("/listview");
+  };
 
   return (
     <>
       <Row className="justify-content-md-center">
-        <Container className='login-form'>
+        <Container className="login-form">
           <div className="L">
             <h1 className="login-header">Login</h1>
             <form id="login" onSubmit={handleSubmit}>
@@ -49,7 +49,9 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
-              <Button className='button-add' type="submit">Login</Button>
+              <Button className="button-add" type="submit">
+                Login
+              </Button>
             </form>
           </div>
         </Container>

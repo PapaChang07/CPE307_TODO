@@ -1,19 +1,18 @@
-body{
-    background-color: #1E3D59;
+body {
+  background-color: #1e3d59;
 }
 
-.login-form{
-    background-color: #F5F0E1;
-    min-width: fit-content;
-    min-height: fit-content;
-    align-self: center;
-    box-sizing: border-box;
-    box-shadow: 3px 6px 40px #000;
-    border-radius: 1.5rem;
-
+.login-form {
+  background-color: #f5f0e1;
+  min-width: fit-content;
+  min-height: fit-content;
+  align-self: center;
+  box-sizing: border-box;
+  box-shadow: 3px 6px 40px #000;
+  border-radius: 1.5rem;
 }
 
-.login-header{
-    text-align: center;
-    color: #1E3D59;
+.login-header {
+  text-align: center;
+  color: #1e3d59;
 }

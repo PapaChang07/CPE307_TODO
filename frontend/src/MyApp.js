@@ -5,7 +5,6 @@ import Login from "./components/Login/Login";
 import "./index.css";
 
 function MyApp() {
-  
   return (
     <Router>
       <Routes>
@@ -13,7 +12,7 @@ function MyApp() {
         <Route path="/listview" element={<ListView />} />
       </Routes>
     </Router>
-  )
+  );
 }
 
 export default MyApp;
