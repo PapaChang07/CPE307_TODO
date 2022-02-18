@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
@@ -34,3 +35,24 @@ body{
     padding: 1%;
     min-height: 30px;
   }
+=======
+body{
+    background-color: #1E3D59;
+}
+
+.login-form{
+    background-color: #F5F0E1;
+    min-width: fit-content;
+    min-height: fit-content;
+    align-self: center;
+    box-sizing: border-box;
+    box-shadow: 3px 6px 40px #000;
+    border-radius: 1.5rem;
+
+}
+
+.login-header{
+    text-align: center;
+    color: #1E3D59;
+}
+>>>>>>> 07625e40ed50ce4b4a436eb47204b059b47d3abd
