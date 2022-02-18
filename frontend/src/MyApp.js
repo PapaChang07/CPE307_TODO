@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import Header from "./components/Header";
-import List from "./components/List";
-import Todo from "./components/todo";
-import Footer from "./components/Footer";
-import { Row } from "react-bootstrap";
+import React from "react";
+import ListView from "./components/ListView/listView";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login/Login";
 import "./index.css";
 
 function MyApp() {
-  const [input, setInput] = useState("");
-  const [todos, setTodos] = useState([]);
-
+  
   return (
     <>
       <Row>
