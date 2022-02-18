@@ -23,6 +23,8 @@
         "react/react-in-jsx-scope":"off"
     },
     "globals": {
-        "module" : true
+        "module" : true,
+        "process" : true,
+        "exports" : true
     }
 }
