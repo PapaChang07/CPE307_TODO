@@ -24,9 +24,10 @@ function Login() {
 
   return (
     <>
+      <div className="header"></div>
       <Row className="justify-content-md-center">
-        <Container className='login-form'>
-          <div className="L">
+        <Container sm="fluid" className='login-form'>
+          <div className="app-wrapper">
             <h1 className="login-header">Login</h1>
             <form id="login" onSubmit={handleSubmit}>
               <Form.Group controlId="username">

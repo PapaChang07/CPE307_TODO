@@ -4,6 +4,7 @@ import List from "./List";
 import Footer from "../Footer";
 import Header from "../Header";
 import { Row } from "react-bootstrap";
+import "./list.css";
 
 function ListView() {
     const [input, setInput] = useState("");
