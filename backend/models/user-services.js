@@ -2,6 +2,11 @@
 const mongoose = require("mongoose");
 const userModel = require("./user");
 const dotenv = require("dotenv");
+const express = require("express");
+const req = require("express/lib/request");
+const res = require("express/lib/response");
+
+ 
 
 dotenv.config();
 
@@ -46,6 +51,8 @@ async function getUser(name) {
   return result;
 }
 
+
+
 async function addUser(user) {
   try {
     const userToAdd = new userModel(user);
@@ -57,6 +64,19 @@ async function addUser(user) {
   }
 }
 
+
+async function updateUser(user) {
+  try {
+    const result = await userModel.findOneAndUpdate({"name": user.name }, {tasks : user.tasks}, 
+    {new: true}, ).clone();
+    return result;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
+
+ 
 async function deleteByName(name) {
   try {
     const person = await getUser(name);
@@ -72,6 +92,7 @@ async function findUserByName(name) {
 }
 
 exports.getUsers = getUsers;
+exports.updateUser = updateUser;
 exports.addUser = addUser;
 exports.deleteByName = deleteByName;
 exports.getUser = getUser;

@@ -1,5 +1,6 @@
 const myFunctions = require("./user-services.js");
 
+
 it("add a proper user", async () => {
   const user = { name: "Jojo", password: "1234", tasks: [{}] };
   const res = await myFunctions.addUser(user);
@@ -34,8 +35,10 @@ it("get a user using a valid  username", async () => {
       { flag: true, date: "2/11/2022", imp: 900, body: "celebrate" },
       { flag: true, date: "2/11/2022", imp: 900, body: "get code to work" },
       { flag: true, date: "2/11/2022", imp: 900, body: "take a dump" },
+      { flag: true, date: "2/11/2022", imp: 900, body: "go on a date" },
     ],
   };
+  
   expect(spec.name).toEqual(user.name);
   expect(spec.tasks).toEqual(user.tasks);
   expect(spec.password).toEqual(user.password);
@@ -83,4 +86,39 @@ it("test to get invalid user", async () => {
   console.log(res);
   const user = undefined;
   expect(res).toEqual(user);
+});
+
+
+it("test update task", async () => { 
+
+  const Jimbostasks = [
+    { flag: true, date: "2/11/2022", imp: 900, body: "take trash out" },
+  ]
+  const JimbosUpdatedTasks = [
+    { flag: true, date: "2/11/2022", imp: 900, body: "take trash out" },
+    { flag: true, date: "2/11/2022", imp: 900, body: "eat hambuuger" },
+  ]
+  const user = {
+    name: "Jimbo",
+    password: "tacocatttt",
+    tasks:  Jimbostasks,
+  };
+  const person = await myFunctions.addUser(user);
+  expect(person.name).toEqual(user.name);
+  expect(person.tasks).toEqual(user.tasks);
+  expect(person.password).toEqual(user.password);
+
+  
+  person.tasks.push( { flag: true, date: "2/11/2022", imp: 900, body: "eat hambuuger" })
+  const res = await myFunctions.updateUser(person)
+  console.log(res);
+
+  expect(res.name).toEqual(user.name);
+  expect(res.tasks).toEqual(JimbosUpdatedTasks);
+  expect(res.password).toEqual(user.password);
+
+  const del = await myFunctions.deleteByName("Jimbo");
+  expect(del.name).toEqual(user.name);
+  expect(del.tasks).toEqual(JimbosUpdatedTasks);
+  expect(del.password).toEqual(user.password);
 });

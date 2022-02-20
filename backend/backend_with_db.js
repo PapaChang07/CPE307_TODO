@@ -29,9 +29,9 @@ app.get("/users", async (req, res) => {
   }
 });
 
-app.get("/users/:id", async (req, res) => {
-  const id = req.params["id"];
-  const result = await userServices.findUserById(id);
+app.get("/users/:name", async (req, res) => {
+  const name = req.params["name"];
+  const result = await userServices.findUserById(name);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
   else {
@@ -40,6 +40,14 @@ app.get("/users/:id", async (req, res) => {
 });
 
 app.post("/users", async (req, res) => {
+  const user = req.body;
+  const savedUser = await userServices.addUser(user);
+  if (savedUser) res.status(201).send(savedUser);
+  else res.status(500).end();
+});
+
+
+app.put("/users", async (req, res) => {
   const user = req.body;
   const savedUser = await userServices.addUser(user);
   if (savedUser) res.status(201).send(savedUser);
