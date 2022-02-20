@@ -73,12 +73,20 @@ it("test to get a single user", async () => {
       { flag: true, date: "2/11/2022", imp: 900, body: "celebrate" },
       { flag: true, date: "2/11/2022", imp: 900, body: "get code to work" },
       { flag: true, date: "2/11/2022", imp: 900, body: "take a dump" },
+      { flag: true, date: "2/11/2022", imp: 900, body: "go on a date" },
     ],
   };
   expect(res.name).toEqual(user.name);
   expect(res.tasks).toEqual(user.tasks);
   expect(res.password).toEqual(user.password);
 });
+
+it("test to get a undefined user", async () => {
+  const name = undefined;
+  const res = await myFunctions.getUser(name);
+  expect(res).toBeFalsy()
+});
+
 
 it("test to get invalid user", async () => {
   const name = "JNSOLASNFJV";
@@ -121,4 +129,21 @@ it("test update task", async () => {
   expect(del.name).toEqual(user.name);
   expect(del.tasks).toEqual(JimbosUpdatedTasks);
   expect(del.password).toEqual(user.password);
+
 });
+
+
+it("test non existant update for user", async () => { 
+  const user =  undefined;
+  const res = await myFunctions.updateUser(user)
+  expect(res).toBe(false);
+});
+
+
+it("test non existant delete", async () => { 
+  const user =  "jlndsinbqeajl";
+  const res = await myFunctions.deleteByName(user)
+  expect(res).toBe(false);
+});
+
+

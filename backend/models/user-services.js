@@ -71,7 +71,6 @@ async function updateUser(user) {
     {new: true}, ).clone();
     return result;
   } catch (error) {
-    console.log(error);
     return false;
   }
 }
