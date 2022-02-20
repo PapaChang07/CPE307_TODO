@@ -17,9 +17,11 @@ app.get("/", (req, res) => {
 
 app.get("/users", async (req, res) => {
   const name = req.query["name"];
-  const job = req.query["job"];
+  console.log(typeof name);
+  const password = req.query["password"];
+  console.log(typeof password);
   try {
-    const result = await userServices.getUsers(name, job);
+    const result = await userServices.getUsers(name, password);
     res.send({ users_list: result });
   } catch (error) {
     console.log(error);

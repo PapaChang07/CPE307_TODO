@@ -4,7 +4,7 @@
   "description": "",
   "main": "backend_with_db.js",
   "scripts": {
-    "test": "prettier --check .",
+    "test": "jest  --runInBand  --forceExit & prettier --check .",
     "dev": "nodemon backend_with_db.js",
     "start": "node backend_with_db.js"
   },
@@ -17,6 +17,7 @@
     "mongoose": "^6.0.10"
   },
   "devDependencies": {
+    "jest": "^27.5.1",
     "nodemon": "^2.0.13",
     "prettier": "2.4.1"
   }
