@@ -6,8 +6,6 @@ const express = require("express");
 const req = require("express/lib/request");
 const res = require("express/lib/response");
 
- 
-
 dotenv.config();
 
 // Uncomment the following to debug mongoose queries, etc.
@@ -51,8 +49,6 @@ async function getUser(name) {
   return result;
 }
 
-
-
 async function addUser(user) {
   try {
     const userToAdd = new userModel(user);
@@ -64,18 +60,21 @@ async function addUser(user) {
   }
 }
 
-
 async function updateUser(user) {
   try {
-    const result = await userModel.findOneAndUpdate({"name": user.name }, {tasks : user.tasks}, 
-    {new: true}, ).clone();
+    const result = await userModel
+      .findOneAndUpdate(
+        { name: user.name },
+        { tasks: user.tasks },
+        { new: true }
+      )
+      .clone();
     return result;
   } catch (error) {
     return false;
   }
 }
 
- 
 async function deleteByName(name) {
   try {
     const person = await getUser(name);

@@ -1,6 +1,5 @@
 const myFunctions = require("./user-services.js");
 
-
 it("add a proper user", async () => {
   const user = { name: "Jojo", password: "1234", tasks: [{}] };
   const res = await myFunctions.addUser(user);
@@ -38,7 +37,7 @@ it("get a user using a valid  username", async () => {
       { flag: true, date: "2/11/2022", imp: 900, body: "go on a date" },
     ],
   };
-  
+
   expect(spec.name).toEqual(user.name);
   expect(spec.tasks).toEqual(user.tasks);
   expect(spec.password).toEqual(user.password);
@@ -84,9 +83,8 @@ it("test to get a single user", async () => {
 it("test to get a undefined user", async () => {
   const name = undefined;
   const res = await myFunctions.getUser(name);
-  expect(res).toBeFalsy()
+  expect(res).toBeFalsy();
 });
-
 
 it("test to get invalid user", async () => {
   const name = "JNSOLASNFJV";
@@ -96,29 +94,31 @@ it("test to get invalid user", async () => {
   expect(res).toEqual(user);
 });
 
-
-it("test update task", async () => { 
-
+it("test update task", async () => {
   const Jimbostasks = [
     { flag: true, date: "2/11/2022", imp: 900, body: "take trash out" },
-  ]
+  ];
   const JimbosUpdatedTasks = [
     { flag: true, date: "2/11/2022", imp: 900, body: "take trash out" },
     { flag: true, date: "2/11/2022", imp: 900, body: "eat hambuuger" },
-  ]
+  ];
   const user = {
     name: "Jimbo",
     password: "tacocatttt",
-    tasks:  Jimbostasks,
+    tasks: Jimbostasks,
   };
   const person = await myFunctions.addUser(user);
   expect(person.name).toEqual(user.name);
   expect(person.tasks).toEqual(user.tasks);
   expect(person.password).toEqual(user.password);
 
-  
-  person.tasks.push( { flag: true, date: "2/11/2022", imp: 900, body: "eat hambuuger" })
-  const res = await myFunctions.updateUser(person)
+  person.tasks.push({
+    flag: true,
+    date: "2/11/2022",
+    imp: 900,
+    body: "eat hambuuger",
+  });
+  const res = await myFunctions.updateUser(person);
   console.log(res);
 
   expect(res.name).toEqual(user.name);
@@ -129,21 +129,16 @@ it("test update task", async () => {
   expect(del.name).toEqual(user.name);
   expect(del.tasks).toEqual(JimbosUpdatedTasks);
   expect(del.password).toEqual(user.password);
-
 });
 
-
-it("test non existant update for user", async () => { 
-  const user =  undefined;
-  const res = await myFunctions.updateUser(user)
+it("test non existant update for user", async () => {
+  const user = undefined;
+  const res = await myFunctions.updateUser(user);
   expect(res).toBe(false);
 });
 
-
-it("test non existant delete", async () => { 
-  const user =  "jlndsinbqeajl";
-  const res = await myFunctions.deleteByName(user)
+it("test non existant delete", async () => {
+  const user = "jlndsinbqeajl";
+  const res = await myFunctions.deleteByName(user);
   expect(res).toBe(false);
 });
-
-
