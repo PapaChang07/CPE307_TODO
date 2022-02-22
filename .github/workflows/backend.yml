@@ -7,9 +7,9 @@ name: backend CI
 
 on:
   push:
-    branches: [main]
+    branches: [CImain]
   pull_request:
-    branches: [main]
+    branches: [CImain]
 
 defaults:
   run:
