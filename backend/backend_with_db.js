@@ -31,7 +31,7 @@ app.get("/users", async (req, res) => {
 
 app.get("/users/:name", async (req, res) => {
   const name = req.params["name"];
-  const result = await userServices.findUserById(name);
+  const result = await userServices.getUser(name);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
   else {
