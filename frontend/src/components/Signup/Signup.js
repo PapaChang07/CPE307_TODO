@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Form, Button, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
-import "./Login.css";
+import "./Signup.css";
 // import { useForm } from "react-hook-form";
 // import { v4 as uuidv4 } from 'uuid';
 // import axios from 'axios';
@@ -22,12 +22,9 @@ function Login() {
     navigate("/listview");
   };
 
-  const handleSubmit1 = (password) => {
-
-      console.log("signup");
-      navigate("/signup");
-    
-    
+  const handleSubmit1 = () => {
+    console.log("login");
+    navigate("/");
   };
 
   return (
@@ -35,7 +32,7 @@ function Login() {
       <Row className="justify-content-md-center">
         <Container className="login-form">
           <div className="L">
-            <h1 className="login-header">Login</h1>
+            <h1 className="login-header">Signup</h1>
             <form id="login" onSubmit={handleSubmit}>
               <Form.Group controlId="username">
                 <Form.Control
@@ -60,13 +57,13 @@ function Login() {
               <Button className="button-add" type="submit">
                 Login
               </Button>
-            
             </form>
             <form id="submit" onSubmit={handleSubmit1}>
             <Button className="button-add" type="submit">
-                Signup
+                Back
               </Button>
             </form>
+
           </div>
         </Container>
       </Row>
