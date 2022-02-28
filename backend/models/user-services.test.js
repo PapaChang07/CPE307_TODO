@@ -3,7 +3,6 @@ const myFunctions = require("./user-services.js");
 it("add a proper user", async () => {
   const user = { name: "Jojo", password: "1234", tasks: [{}] };
   const res = await myFunctions.addUser(user);
-  console.log(res);
   expect(res.name).toEqual(user.name);
   expect(res.tasks).toEqual(user.tasks);
   expect(res.password).toEqual(user.password);
@@ -89,7 +88,6 @@ it("test to get a undefined user", async () => {
 it("test to get invalid user", async () => {
   const name = "JNSOLASNFJV";
   const res = await myFunctions.getUser(name);
-  console.log(res);
   const user = undefined;
   expect(res).toEqual(user);
 });
