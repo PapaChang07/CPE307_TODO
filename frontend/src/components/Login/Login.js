@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Form, Button, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import "./Login.css";
+import axios from "axios";
 // import { useForm } from "react-hook-form";
 // import { v4 as uuidv4 } from 'uuid';
 // import axios from 'axios';
@@ -21,6 +22,26 @@ function Login() {
     console.log("listview");
     navigate("/listview");
   };
+
+  async function fetchAll() {
+    try {
+      const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
+      //console.log(response);
+      return response.data.users_list;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
+
+  useEffect(() => {
+    fetchAll().then((result) => {
+      if (result) {
+        console.log("bruh")
+      }
+    });
+  }, []);
 
   return (
     <>

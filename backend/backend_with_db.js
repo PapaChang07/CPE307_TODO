@@ -15,6 +15,30 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.post("/signup", async (req, res) => {
+  const username = req.query["username"];
+  const password = req.query["password"];
+  try {
+    const result = await userServices.findUserByUsernameAndPassword(username, password);
+    res.send({ users_list: result });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("An error ocurred in the server.");
+  }
+});
+
+app.get("/login", async (req, res) => {
+  const username = req.query["username"];
+  const password = req.query["password"];
+  try {
+    const result = await userServices.getUsers(name, job);
+    res.send({ users_list: result });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("An error ocurred in the server.");
+  }
+});
+
 app.get("/users", async (req, res) => {
   const name = req.query["name"];
   const job = req.query["job"];

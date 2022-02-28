@@ -48,6 +48,15 @@ async function findUserById(id) {
   }
 }
 
+async function findUserByUsernameAndPassword(username, password){
+  try {
+    return await userModel.findUserByUsernameandPassword(username, password)
+  } catch (error) {
+    console.log("Couldn't find the User")
+    return undefined;
+  }
+}
+
 async function addUser(user) {
   try {
     const userToAdd = new userModel(user);
@@ -75,7 +84,7 @@ async function findUserByJob(password) {
   return await userModel.find({ password: password });
 }
 
-async function findUserByNameandJob(name, password) {
+async function findUserByUsernameandPassword(name, password) {
   return await userModel.find({ password: password, name: name });
 }
 
@@ -83,3 +92,4 @@ exports.getUsers = getUsers;
 exports.findUserById = findUserById;
 exports.addUser = addUser;
 exports.deleteByID = deleteByID;
+exports.findUserByUsernameAndPassword = findUserByUsernameAndPassword;
