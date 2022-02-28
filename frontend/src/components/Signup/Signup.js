@@ -17,12 +17,13 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
   const handleSubmit = () => {
     console.log("listview");
     navigate("/listview");
   };
 
-  const handleSubmit1 = () => {
+  const handleLogin = () => {
     console.log("login");
     navigate("/");
   };
@@ -33,6 +34,7 @@ function Login() {
         <Container className="login-form">
           <div className="L">
             <h1 className="login-header">Signup</h1>
+            <br></br>
             <form id="login" onSubmit={handleSubmit}>
               <Form.Group controlId="username">
                 <Form.Control
@@ -44,6 +46,7 @@ function Login() {
                   onChange={(e) => setUser(e.target.value)}
                 />
               </Form.Group>
+              <br></br>
               <Form.Group controlId="password">
                 <Form.Control
                   type="password"
@@ -54,14 +57,11 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
-              <Button className="button-add" type="submit">
-                Login
-              </Button>
+              <br></br>
+              <Button className="button-login" type="submit">Sign Up</Button>
             </form>
-            <form id="submit" onSubmit={handleSubmit1}>
-            <Button className="button-add" type="submit">
-                Back
-              </Button>
+            <form id="submit" onSubmit={handleLogin}>
+              <Button className="button-signup" type="submit">Already have an account? Login</Button>
             </form>
 
           </div>

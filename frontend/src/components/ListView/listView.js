@@ -3,8 +3,8 @@ import Todo from "../todo";
 import List from "./List";
 import Footer from "../Footer";
 import Header from "../Header";
-import { Row, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Row } from "react-bootstrap";
+import "./list.css";
 
 function ListView() {
   //const initialState = JSON.parse(localStorage.getItem("todos")) || [];
@@ -15,25 +15,12 @@ function ListView() {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-  
-  const navigate = useNavigate();
-  const handleSubmit = () => {
-    console.log("login");
-    navigate("/");
-  };
 
   return (
     <>
-    <form id="submit" onSubmit={handleSubmit}>
-            <Button className="button-add" type="submit">
-                Log out
-              </Button>
-            </form>
-      <Row>
-        <div className="header">
-          <Header />
-        </div>
-      </Row>
+      <div className="header">
+        <Header />
+      </div>
       <Row>
         <div className="container">
           <div className="app-wrapper">
@@ -57,13 +44,7 @@ function ListView() {
           </div>
         </div>
       </Row>
-      <Row>
-        <div className="footer-col col-md-4">
-          <Footer />
-        </div>
-      </Row>
-      
-      
+      <Footer />
     </>
   );
 }

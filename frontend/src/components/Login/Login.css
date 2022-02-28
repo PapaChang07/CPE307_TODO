@@ -16,3 +16,40 @@ body {
   text-align: center;
   color: #1e3d59;
 }
+
+.username{
+  outline: none;
+  width: 260px;
+  padding: 15px;
+  font-size: 20px;
+  background-color: #fffefe;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+.password{
+  outline: none;
+  width: 260px;
+  padding: 15px;
+  font-size: 20px;
+  background-color: #fffefe;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+.button-signup{
+  font-size: 20px;
+  border-radius: 10px;
+  border: 0;
+  background-color: #fffefe;
+  cursor: pointer;
+}
+
+.button-login{
+  padding: 10px 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 0;
+  background-color: #ff6e40;
+  cursor: pointer;
+}

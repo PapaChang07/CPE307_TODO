@@ -41,8 +41,17 @@
 }
 
 .button-add {
-  width: 70px;
   padding: 15px 15px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 0;
+  background-color: #ff6e40;
+  cursor: pointer;
+}
+
+.button-logout {
+  float: right;
+  padding: 5px;
   font-size: 20px;
   border-radius: 10px;
   border: 0;
