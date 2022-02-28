@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Form(props) {
-  const [person, setPerson] = useState({
+  const [ person, setPerson] = useState({
     name: "",
     password: "",
   });
