@@ -16,6 +16,8 @@ function ListView() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+
+
   return (
     <>
       <div className="header">

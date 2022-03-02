@@ -7,6 +7,7 @@ import "./list.css";
 
 const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
   const [mytasks, setTasks] = useState([]);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     if (editTodo) {
@@ -32,12 +33,17 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
     event.preventDefault();
     if (!editTodo) {
       setTodos([...todos, { id: uuidv4(), title: input, completed: false }]);
+      //let newtsk = {body: input }
+      //mytasks.push(newtsk);
+      //user.tasks = mytasks;
+      //const resp = axios.put("https://cpe307-todo-backend.herokuapp.com/users", user ) 
+      //console.log("put");
       setInput("");
     } else {
       updateTodo(input, editTodo.id, editTodo.completed);
     }
   };
-
+  
   async function fetchAll() {
     try {
       const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
@@ -52,7 +58,28 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
   useEffect(() => {
     fetchAll().then((result) => {
       if (result) {
-        setTasks(result);
+         
+      setTasks(result);
+      let tasks = [];
+
+      let user = result.find((person) => person.name === "Eric");
+      taskItems = user.tasks.map((task) => <li className="list">{task.body}</li>);
+      setUser(user);
+      for(let x in user.tasks){      
+        console.log(x)
+        setEditTodo("");
+        
+        setInput(user.tasks[x].body)
+        setTodos([...tasks, { id: uuidv4(), title: user.tasks[x].body, completed: false }]);
+        tasks.push({ id: uuidv4(), title: user.tasks[x].body, completed: false })
+        setInput("");
+        setEditTodo("");
+
+
+       }
+        
+
+
       }
     });
   }, []);
@@ -60,11 +87,7 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
   //const { handleSubmit } = useForm();
 
   let taskItems = [];
-
-  if (mytasks.length !== 0) {
-    let user = mytasks.find((person) => person.name === "Eric");
-    taskItems = user.tasks.map((task) => <li className="list">{task.body}</li>);
-  }
+  
 
   return (
     <form onSubmit={onFormSubmit}>

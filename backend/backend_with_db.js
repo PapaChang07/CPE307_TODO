@@ -49,7 +49,7 @@ app.post("/users", async (req, res) => {
  
 app.put("/users", async (req, res) => {
   const user = req.body;
-  const savedUser = await userServices.addUser(user);
+  const savedUser = await userServices.updateUser(user);
   if (savedUser) res.status(201).send(savedUser);
   else res.status(500).end();
 });
