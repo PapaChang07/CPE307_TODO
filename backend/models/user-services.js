@@ -34,7 +34,7 @@ async function getUsers(name, password) {
   } else if (password && !name) {
     result = await findUserByJob(password);
   } else if (password && name) {
-    result = await findUserByNameandJob(name, password);
+    result = await findUserByNameandPassword(name, password);
   }
   return result;
 }
@@ -48,9 +48,9 @@ async function findUserById(id) {
   }
 }
 
-async function findUserByUsernameAndPassword(username, password){
+async function findUserByUsernameAndPassword(name, password){
   try {
-    return await userModel.findUserByUsernameandPassword(username, password)
+    return await findUserByNameandPassword(name, password)
   } catch (error) {
     console.log("Couldn't find the User")
     return undefined;
@@ -84,8 +84,8 @@ async function findUserByJob(password) {
   return await userModel.find({ password: password });
 }
 
-async function findUserByUsernameandPassword(name, password) {
-  return await userModel.find({ password: password, name: name });
+async function findUserByNameandPassword(name, password) {
+  return await userModel.findOne({ name: name , password: password });
 }
 
 exports.getUsers = getUsers;

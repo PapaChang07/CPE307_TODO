@@ -27,12 +27,15 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.get("/login", async (req, res) => {
-  const username = req.query["username"];
+app.get("/login/", async (req, res) => {
+  const username = req.query["name"];
+  console.log(username);
   const password = req.query["password"];
+  console.log(password);
   try {
-    const result = await userServices.getUsers(name, job);
+    const result = await userServices.findUserByUsernameAndPassword(username, password);
     res.send({ users_list: result });
+    
   } catch (error) {
     console.log(error);
     res.status(500).send("An error ocurred in the server.");

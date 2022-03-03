@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container, Form, Button, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
@@ -16,18 +16,39 @@ import axios from "axios";
 function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  //const [test, setTest] = useState(false);
 
   const navigate = useNavigate();
   const handleSubmit = () => {
-    console.log("listview");
+    var hmmm = fetchAll().then((result) => {
+      console.log(result);
+      return result;
+    });
+    console.log(hmmm);
+    console.log("interesting\n");
     navigate("/listview");
+    // if (test === true){
+    //   console.log("correct!");
+    //   navigate("/listview");
+    // }
+    // else {
+    //   console.log("intereseting");
+    //   navigate("/");
+    // }
+    setUser("");
+    setPassword("");
+    // console.log(fetchAll().then(result => console.log(result))).catch( err => console.log(err));
   };
 
   async function fetchAll() {
     try {
-      const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
-      //console.log(response);
-      return response.data.users_list;
+      const response = await axios.get('http://localhost:5000/login/?name='+ user +'&password=' + password +'');
+      console.log(response.data.users_list);
+      if (response.data.users_list == null){
+        console.log("hmmmm")
+        return false;
+      }
+      return true;
     } catch (error) {
       //We're not handling errors. Just logging into the console.
       console.log(error);
@@ -35,13 +56,6 @@ function Login() {
     }
   }
 
-  useEffect(() => {
-    fetchAll().then((result) => {
-      if (result) {
-        console.log("bruh")
-      }
-    });
-  }, []);
 
   return (
     <>
