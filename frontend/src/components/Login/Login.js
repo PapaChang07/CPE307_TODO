@@ -16,25 +16,24 @@ import axios from "axios";
 function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  //const [test, setTest] = useState(false);
+  const [test, setTest] = useState(false);
 
   const navigate = useNavigate();
   const handleSubmit = () => {
-    var hmmm = fetchAll().then((result) => {
+    fetchAll().then((result) => {
       console.log(result);
+      setTest(result);
       return result;
     });
-    console.log(hmmm);
-    console.log("interesting\n");
-    navigate("/listview");
-    // if (test === true){
-    //   console.log("correct!");
-    //   navigate("/listview");
-    // }
-    // else {
-    //   console.log("intereseting");
-    //   navigate("/");
-    // }
+    // navigate("/listview");
+    if (test === true){
+      console.log("correct!");
+      navigate("/listview");
+    }
+    else {
+      console.log("wrong username and password");
+      navigate("/");
+    }
     setUser("");
     setPassword("");
     // console.log(fetchAll().then(result => console.log(result))).catch( err => console.log(err));
@@ -42,7 +41,7 @@ function Login() {
 
   async function fetchAll() {
     try {
-      const response = await axios.get('http://localhost:5000/login/?name='+ user +'&password=' + password +'');
+      const response = await axios.get('http://localhost:5000/login?name='+ user +'&password=' + password +'');
       console.log(response.data.users_list);
       if (response.data.users_list == null){
         console.log("hmmmm")
