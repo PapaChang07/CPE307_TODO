@@ -27,7 +27,7 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
     );
     let newTodos = [];
     for(let x in newTodo){
-      newTodos.push( {body : newTodo[x].title});
+      newTodos.push( {body : newTodo[x].title, flag : todos[x].completed});
     }
     user.tasks = newTodos;
     console.log(newTodos);
@@ -43,7 +43,7 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
       let newTsk = {body: input }
       let newTodos = [];
       for(let x in todos){
-        newTodos.push( {body : todos[x].title});
+        newTodos.push( {body : todos[x].title, flag : todos[x].completed });
       }
       newTodos.push(newTsk);
       user.tasks = newTodos;
@@ -110,12 +110,10 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
 
 
        }
-        
-
-
+      
       }
     });
-  }, );
+  },[] );
 
   //const { handleSubmit } = useForm();
 
