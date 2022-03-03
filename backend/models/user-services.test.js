@@ -51,8 +51,6 @@ it("get a list of all users", async () => {
     if (!names.includes(res[i].name)) names.push(res[i].name);
   }
   const checkNames = ["Yvonne", "Ryab", "Eric"];
-  checkNames.sort();
-  names.sort();
 
   expect(names[0]).toEqual(checkNames[0]);
   expect(names[1]).toEqual(checkNames[1]);

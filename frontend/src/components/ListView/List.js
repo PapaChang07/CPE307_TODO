@@ -99,7 +99,6 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
         setUser(user);
         for (let x in user.tasks) {
           console.log(x);
-          setEditTodo("");
 
           setInput(user.tasks[x].body);
           setTodos([
@@ -112,7 +111,6 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
             completed: false,
           });
           setInput("");
-          setEditTodo("");
         }
       }
     });

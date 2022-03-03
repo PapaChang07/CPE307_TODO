@@ -46,16 +46,14 @@ app.post("/users", async (req, res) => {
   else res.status(500).end();
 });
 
- 
 app.put("/users", async (req, res) => {
   const user = req.body;
-  console.log("BACKEND")
+  console.log("BACKEND");
   const savedUser = await userServices.updateUser(user);
   if (savedUser) res.status(201).send(savedUser);
   else res.status(500).end();
 });
 
- 
 app.listen(process.env.PORT || port, () => {
   console.log("REST API is listening.");
- });
+});
