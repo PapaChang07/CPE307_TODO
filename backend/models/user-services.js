@@ -71,6 +71,7 @@ async function updateUser(user) {
       .clone();
     return result;
   } catch (error) {
+    console.log("NOTFOUND");
     return false;
   }
 }

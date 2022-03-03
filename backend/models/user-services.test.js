@@ -50,11 +50,13 @@ it("get a list of all users", async () => {
   for (let i = 0; i < res.length; i++) {
     if (!names.includes(res[i].name)) names.push(res[i].name);
   }
-  const checkNames = ["Yvonne", "Ryab", "Eric", "Joey"];
+  const checkNames = ["Yvonne", "Ryab", "Eric"];
   checkNames.sort();
   names.sort();
 
-  expect(names).toEqual(checkNames);
+  expect(names[0]).toEqual(checkNames[0]);
+  expect(names[1]).toEqual(checkNames[1]);
+  expect(names[2]).toEqual(checkNames[2]);
 });
 
 it("test to get a single user", async () => {

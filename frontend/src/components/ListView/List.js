@@ -25,6 +25,13 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
     const newTodo = todos.map((todo) =>
       todo.id === id ? { title, id, completed } : todo
     );
+    let newTodos = [];
+    for(let x in newTodo){
+      newTodos.push( {body : newTodo[x].title});
+    }
+    user.tasks = newTodos;
+    console.log(newTodos);
+    updateCurrUser(user);
     setTodos(newTodo);
     setEditTodo("");
   };
@@ -33,20 +40,28 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
     event.preventDefault();
     if (!editTodo) {
       setTodos([...todos, { id: uuidv4(), title: input, completed: false }]);
-      //let newtsk = {body: input }
-      //mytasks.push(newtsk);
-      //user.tasks = mytasks;
+      let newTsk = {body: input }
+      let newTodos = [];
+      for(let x in todos){
+        newTodos.push( {body : todos[x].title});
+      }
+      newTodos.push(newTsk);
+      user.tasks = newTodos;
+      console.log(newTodos);
+      updateCurrUser(user);
       //const resp = axios.put("https://cpe307-todo-backend.herokuapp.com/users", user ) 
       //console.log("put");
       setInput("");
     } else {
       updateTodo(input, editTodo.id, editTodo.completed);
+      
     }
   };
   
   async function fetchAll() {
     try {
-      const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
+      //const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
+      const response = await axios.get("http://localhost:5000/users");
       //console.log(response);
       return response.data.users_list;
     } catch (error) {
@@ -55,15 +70,33 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
       return false;
     }
   }
+
+  async function updateCurrUser(user) {
+    try {
+      console.log(user);
+     // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
+      const response = await axios.put("http://localhost:5000/users", user);
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
+
   useEffect(() => {
     fetchAll().then((result) => {
       if (result) {
          
-      setTasks(result);
+      
       let tasks = [];
 
-      let user = result.find((person) => person.name === "Eric");
-      taskItems = user.tasks.map((task) => <li className="list">{task.body}</li>);
+      let user = result.find((person) => person.name === "Juan");
+      console.log(user)
+      let items = user.tasks.map((task) => <li className="list">{task.body}</li>);
+      setTasks(items);
+      console.log(mytasks);
       setUser(user);
       for(let x in user.tasks){      
         console.log(x)
@@ -82,7 +115,7 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
 
       }
     });
-  }, []);
+  }, );
 
   //const { handleSubmit } = useForm();
 
