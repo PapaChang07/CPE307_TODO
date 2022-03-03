@@ -26,8 +26,8 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
       todo.id === id ? { title, id, completed } : todo
     );
     let newTodos = [];
-    for(let x in newTodo){
-      newTodos.push( {body : newTodo[x].title, flag : todos[x].completed});
+    for (let x in newTodo) {
+      newTodos.push({ body: newTodo[x].title, flag: todos[x].completed });
     }
     user.tasks = newTodos;
     console.log(newTodos);
@@ -40,24 +40,23 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
     event.preventDefault();
     if (!editTodo) {
       setTodos([...todos, { id: uuidv4(), title: input, completed: false }]);
-      let newTsk = {body: input }
+      let newTsk = { body: input };
       let newTodos = [];
-      for(let x in todos){
-        newTodos.push( {body : todos[x].title, flag : todos[x].completed });
+      for (let x in todos) {
+        newTodos.push({ body: todos[x].title, flag: todos[x].completed });
       }
       newTodos.push(newTsk);
       user.tasks = newTodos;
       console.log(newTodos);
       updateCurrUser(user);
-      //const resp = axios.put("https://cpe307-todo-backend.herokuapp.com/users", user ) 
+      //const resp = axios.put("https://cpe307-todo-backend.herokuapp.com/users", user )
       //console.log("put");
       setInput("");
     } else {
       updateTodo(input, editTodo.id, editTodo.completed);
-      
     }
   };
-  
+
   async function fetchAll() {
     try {
       //const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
@@ -74,7 +73,7 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
   async function updateCurrUser(user) {
     try {
       console.log(user);
-     // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
+      // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
       const response = await axios.put("http://localhost:5000/users", user);
       console.log(response);
       return response.data;
@@ -88,37 +87,40 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
   useEffect(() => {
     fetchAll().then((result) => {
       if (result) {
-         
-      
-      let tasks = [];
+        let tasks = [];
 
-      let user = result.find((person) => person.name === "Juan");
-      console.log(user)
-      let items = user.tasks.map((task) => <li className="list">{task.body}</li>);
-      setTasks(items);
-      console.log(mytasks);
-      setUser(user);
-      for(let x in user.tasks){      
-        console.log(x)
-        setEditTodo("");
-        
-        setInput(user.tasks[x].body)
-        setTodos([...tasks, { id: uuidv4(), title: user.tasks[x].body, completed: false }]);
-        tasks.push({ id: uuidv4(), title: user.tasks[x].body, completed: false })
-        setInput("");
-        setEditTodo("");
+        let user = result.find((person) => person.name === "Juan");
+        console.log(user);
+        let items = user.tasks.map((task) => (
+          <li className="list">{task.body}</li>
+        ));
+        setTasks(items);
+        console.log(mytasks);
+        setUser(user);
+        for (let x in user.tasks) {
+          console.log(x);
+          setEditTodo("");
 
-
-       }
-      
+          setInput(user.tasks[x].body);
+          setTodos([
+            ...tasks,
+            { id: uuidv4(), title: user.tasks[x].body, completed: false },
+          ]);
+          tasks.push({
+            id: uuidv4(),
+            title: user.tasks[x].body,
+            completed: false,
+          });
+          setInput("");
+          setEditTodo("");
+        }
       }
     });
-  },[] );
+  }, []);
 
   //const { handleSubmit } = useForm();
 
   let taskItems = [];
-  
 
   return (
     <form onSubmit={onFormSubmit}>

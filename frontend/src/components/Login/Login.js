@@ -24,8 +24,8 @@ function Login() {
   };
 
   const handleSignUp = (password) => {
-      console.log("signup");
-      navigate("/signup");
+    console.log("signup");
+    navigate("/signup");
   };
 
   return (
@@ -57,10 +57,14 @@ function Login() {
               />
             </Form.Group>
             <br></br>
-            <Button className="button-login" type="submit">Login</Button>
+            <Button className="button-login" type="submit">
+              Login
+            </Button>
           </form>
           <form id="submit" onSubmit={handleSignUp}>
-            <Button className="button-signup" type="submit">Don't have an account? Sign Up</Button>
+            <Button className="button-signup" type="submit">
+              Don't have an account? Sign Up
+            </Button>
           </form>
         </div>
       </Container>

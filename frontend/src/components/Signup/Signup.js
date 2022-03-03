@@ -58,12 +58,15 @@ function Login() {
                 />
               </Form.Group>
               <br></br>
-              <Button className="button-login" type="submit">Sign Up</Button>
+              <Button className="button-login" type="submit">
+                Sign Up
+              </Button>
             </form>
             <form id="submit" onSubmit={handleLogin}>
-              <Button className="button-signup" type="submit">Already have an account? Login</Button>
+              <Button className="button-signup" type="submit">
+                Already have an account? Login
+              </Button>
             </form>
-
           </div>
         </Container>
       </Row>

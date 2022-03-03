@@ -2,8 +2,8 @@ body {
   background-color: #1e3d59;
 }
 
-.container{
-  color: #F5F0E1;
+.container {
+  color: #f5f0e1;
 }
 
 .login-form {
@@ -21,7 +21,7 @@ body {
   color: #1e3d59;
 }
 
-.username{
+.username {
   outline: none;
   width: 260px;
   padding: 15px;
@@ -31,7 +31,7 @@ body {
   border-radius: 10px;
 }
 
-.password{
+.password {
   outline: none;
   width: 260px;
   padding: 15px;
@@ -41,7 +41,7 @@ body {
   border-radius: 10px;
 }
 
-.button-signup{
+.button-signup {
   font-size: 20px;
   border-radius: 10px;
   border: 0;
@@ -49,7 +49,7 @@ body {
   cursor: pointer;
 }
 
-.button-login{
+.button-login {
   padding: 10px 10px;
   font-size: 20px;
   border-radius: 10px;
