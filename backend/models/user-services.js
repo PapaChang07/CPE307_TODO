@@ -2,9 +2,6 @@
 const mongoose = require("mongoose");
 const userModel = require("./user");
 const dotenv = require("dotenv");
-const express = require("express");
-const req = require("express/lib/request");
-const res = require("express/lib/response");
 
 dotenv.config();
 
