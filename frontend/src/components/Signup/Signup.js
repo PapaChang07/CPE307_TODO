@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Container, Form, Button, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
+import axios from 'axios';
 import "./Signup.css";
 // import { useForm } from "react-hook-form";
 // import { v4 as uuidv4 } from 'uuid';
-// import axios from 'axios';
 
 // function submitForm(props) {
 //   props.handleSubmit(person);
@@ -19,6 +19,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
+    updateCurrUser(user, password)
     console.log("listview");
     navigate("/listview");
   };
@@ -27,6 +28,20 @@ function Login() {
     console.log("login");
     navigate("/");
   };
+  
+    async function updateCurrUser(user, password) {
+    try {
+      console.log(user, password);
+      // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
+      const response = await axios.post("http://localhost:5000/signup", {"name": user, "password": password});
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
 
   return (
     <>

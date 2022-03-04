@@ -46,6 +46,14 @@ app.post("/users", async (req, res) => {
   else res.status(500).end();
 });
 
+app.post("/signup", async (req, res) => {
+  const user = req.body;
+  console.log(user);
+  const savedUser = await userServices.addUser(user);
+  if (savedUser) res.status(201).send(savedUser);
+  else res.status(500).end();
+});
+
 app.put("/users", async (req, res) => {
   const user = req.body;
   console.log("BACKEND");
