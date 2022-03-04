@@ -48,8 +48,6 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
       user.tasks = newTodos;
       console.log(newTodos);
       updateCurrUser(user);
-      //const resp = axios.put("https://cpe307-todo-backend.herokuapp.com/users", user )
-      //console.log("put");
       setInput("");
     } else {
       updateTodo(input, editTodo.id, editTodo.completed);
