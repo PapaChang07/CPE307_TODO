@@ -39,7 +39,7 @@ function ListView() {
         let user = result.find((person) => person.name === "Juan");
         console.log(user);
         let items = user.tasks.map((task) => (
-          <li className="list">{task.body}</li>
+           {body: task.body}
         ));
         setTasks(items);
         console.log(myTasks);
