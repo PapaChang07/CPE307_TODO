@@ -3,14 +3,6 @@ import { Container, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import "./Login.css";
-// import { useForm } from "react-hook-form";
-// import { v4 as uuidv4 } from 'uuid';
-// import axios from 'axios';
-
-// function submitForm(props) {
-//   props.handleSubmit(person);
-//   setPerson({username: '', password: ''});
-// }
 
 function Login() {
   const [user, setUser] = useState("");

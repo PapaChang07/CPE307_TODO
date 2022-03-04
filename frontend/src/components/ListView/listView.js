@@ -7,7 +7,6 @@ import { Row } from "react-bootstrap";
 import "./list.css";
 
 function ListView() {
-  //const initialState = JSON.parse(localStorage.getItem("todos")) || [];
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
   const [editTodo, setEditTodo] = useState(null);

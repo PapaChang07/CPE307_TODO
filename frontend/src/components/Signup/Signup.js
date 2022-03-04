@@ -4,13 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import axios from 'axios';
 import "./Signup.css";
-// import { useForm } from "react-hook-form";
-// import { v4 as uuidv4 } from 'uuid';
-
-// function submitForm(props) {
-//   props.handleSubmit(person);
-//   setPerson({username: '', password: ''});
-// }
 
 function Login() {
   const [user, setUser] = useState("");
