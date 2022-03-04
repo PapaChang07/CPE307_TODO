@@ -19,23 +19,26 @@ function Login() {
   const [test, setTest] = useState(false);
 
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    fetchAll().then((result) => {
-      console.log(result);
-      setTest(result);
-      return result;
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("IN HANDLESUBMIT");
+    const result = await fetchAll();
+    console.log("IN FETCHALL: " + result);
+    // setTest(result);
+    // return result;
+
     // navigate("/listview");
-    if (test === true){
+    if (result === true) {
       console.log("correct!");
       navigate("/listview");
-    }
-    else {
+    } else {
       console.log("wrong username and password");
       navigate("/");
     }
     setUser("");
     setPassword("");
+
+    console.log("AFTER HANDLESUBMIT");
     // console.log(fetchAll().then(result => console.log(result))).catch( err => console.log(err));
   };
 
