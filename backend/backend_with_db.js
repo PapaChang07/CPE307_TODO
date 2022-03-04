@@ -44,9 +44,11 @@ app.get("/login/", async (req, res) => {
 
 app.get("/users", async (req, res) => {
   const name = req.query["name"];
-  const job = req.query["job"];
+  console.log(typeof name);
+  const password = req.query["password"];
+  console.log(typeof password);
   try {
-    const result = await userServices.getUsers(name, job);
+    const result = await userServices.getUsers(name, password);
     res.send({ users_list: result });
   } catch (error) {
     console.log(error);
@@ -54,9 +56,9 @@ app.get("/users", async (req, res) => {
   }
 });
 
-app.get("/users/:id", async (req, res) => {
-  const id = req.params["id"];
-  const result = await userServices.findUserById(id);
+app.get("/users/:name", async (req, res) => {
+  const name = req.params["name"];
+  const result = await userServices.getUser(name);
   if (result === undefined || result === null)
     res.status(404).send("Resource not found.");
   else {
@@ -67,6 +69,22 @@ app.get("/users/:id", async (req, res) => {
 app.post("/users", async (req, res) => {
   const user = req.body;
   const savedUser = await userServices.addUser(user);
+  if (savedUser) res.status(201).send(savedUser);
+  else res.status(500).end();
+});
+
+app.post("/signup", async (req, res) => {
+  const user = req.body;
+  console.log(user);
+  const savedUser = await userServices.addUser(user);
+  if (savedUser) res.status(201).send(savedUser);
+  else res.status(500).end();
+});
+
+app.put("/users", async (req, res) => {
+  const user = req.body;
+  console.log("BACKEND");
+  const savedUser = await userServices.updateUser(user);
   if (savedUser) res.status(201).send(savedUser);
   else res.status(500).end();
 });
