@@ -5,7 +5,7 @@ function Form(props) {
     name: "",
     password: "",
   });
-// Workiong on CI
+  // Workiong on CI
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "password")
