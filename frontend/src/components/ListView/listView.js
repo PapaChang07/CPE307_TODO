@@ -35,28 +35,29 @@ function ListView() {
     fetchAll().then((result) => {
       if (result) {
         let tasks = [];
-
-        let user = result.find((person) => person.name === "Juan");
-        console.log(user);
-        let items = user.tasks.map((task) => (
-           {body: task.body}
-        ));
-        setTasks(items);
-        console.log(myTasks);
-        setUser(user);
+        let items = [];
+        let user = result.find((person) => person.name === "Ryab");
         for (let x in user.tasks) {
-          console.log(x);
-
+          items.push({
+            body: user.tasks[x].body,
+            completed: user.tasks[x].completed,
+          });
+        }
+        setTasks(items);
+        setUser(user);
+        for (let x in items) {
           setInput(user.tasks[x].body);
+          let id = uuidv4();
           setTodos([
             ...tasks,
-            { id: uuidv4(), title: user.tasks[x].body, completed: user.tasks.flag },
+            { id: id, title: items[x].body, completed: items[x].completed },
           ]);
           tasks.push({
-            id: uuidv4(),
-            title: user.tasks[x].body,
-            completed: user.tasks.flag,
+            id: id,
+            title: items[x].body,
+            completed: items[x].completed,
           });
+
           setInput("");
         }
       }
@@ -80,10 +81,10 @@ function ListView() {
                 setTodos={setTodos}
                 editTodo={editTodo}
                 setEditTodo={setEditTodo}
-                user = {user}
-                setUser = {setUser}
-                myTasks = {myTasks}
-                setTasks = {setTasks}
+                user={user}
+                setUser={setUser}
+                myTasks={myTasks}
+                setTasks={setTasks}
               />
             </div>
             <div>
@@ -91,9 +92,8 @@ function ListView() {
                 todos={todos}
                 setTodos={setTodos}
                 setEditTodo={setEditTodo}
-                user ={user}
-                setUser = {setUser}
-
+                user={user}
+                setUser={setUser}
               />
             </div>
           </div>

@@ -4,9 +4,15 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import "./list.css";
 
-const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user }) => {
- 
-
+const List = ({
+  input,
+  setInput,
+  todos,
+  setTodos,
+  editTodo,
+  setEditTodo,
+  user,
+}) => {
   useEffect(() => {
     if (editTodo) {
       setInput(editTodo.title);
@@ -53,7 +59,6 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user })
     }
   };
 
-
   async function updateCurrUser(user) {
     try {
       console.log(user);
@@ -67,8 +72,6 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user })
       return false;
     }
   }
-
-  
 
   //const { handleSubmit } = useForm();
 
