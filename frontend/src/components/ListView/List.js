@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useEffect } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import "./list.css";
 
-const List = ({
-  input,
-  setInput,
-  todos,
-  setTodos,
-  editTodo,
-  setEditTodo,
-  user,
-}) => {
+const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user  }) => {
+
   useEffect(() => {
     if (editTodo) {
       setInput(editTodo.title);
@@ -31,7 +25,7 @@ const List = ({
     );
     let newTodos = [];
     for (let x in newTodo) {
-      newTodos.push({ body: newTodo[x].title, flag: todos[x].completed });
+      newTodos.push({ body: newTodo[x].title, completed: todos[x].completed });
     }
     user.tasks = newTodos;
     console.log(newTodos);
@@ -47,7 +41,7 @@ const List = ({
       let newTsk = { body: input };
       let newTodos = [];
       for (let x in todos) {
-        newTodos.push({ body: todos[x].title, flag: todos[x].completed });
+        newTodos.push({ body: todos[x].title, completed: todos[x].completed });
       }
       newTodos.push(newTsk);
       user.tasks = newTodos;
@@ -58,6 +52,7 @@ const List = ({
       updateTodo(input, editTodo.id, editTodo.completed);
     }
   };
+
 
   async function updateCurrUser(user) {
     try {
@@ -72,6 +67,8 @@ const List = ({
       return false;
     }
   }
+
+  
 
   //const { handleSubmit } = useForm();
 

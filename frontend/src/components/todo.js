@@ -37,20 +37,7 @@ const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
     updateCurrUser(user);
   };
 
-  async function updateCurrUser(user) {
-    try {
-      console.log(user);
-      // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
-      const response = await axios.put("http://localhost:5000/users", user);
-      console.log(response);
-      return response.data;
-    } catch (error) {
-      //We're not handling errors. Just logging into the console.
-      console.log(error);
-      return false;
-    }
-  }
-
+ 
   const handleEdit = ({ id }) => {
     const findTodo = todos.find((todo) => todo.id === id);
     setEditTodo(findTodo);
@@ -61,7 +48,7 @@ const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
     let filtered = todos.filter((todo) => todo.id !== id);
     let newTodos = [];
     for (let x in filtered) {
-      newTodos.push({ body: filtered[x].title, flag: filtered[x].completed });
+      newTodos.push({ body: filtered[x].title, completed: filtered[x].completed });
     }
 
     user.tasks = newTodos;
