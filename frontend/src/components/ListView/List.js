@@ -113,6 +113,7 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
         }
       }
     });
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //const { handleSubmit } = useForm();
