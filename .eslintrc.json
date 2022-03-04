@@ -21,5 +21,10 @@
     ],
     "rules": {
         "react/react-in-jsx-scope":"off"
+    },
+    "globals": {
+        "module" : true,
+        "process" : true,
+        "exports" : true
     }
 }

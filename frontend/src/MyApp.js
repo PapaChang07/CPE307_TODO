@@ -1,46 +1,20 @@
-import React, { useState } from "react";
-import Header from "./components/Header";
-import List from "./components/List";
-import Todo from "./components/todo";
-import Footer from "./components/Footer";
-import { Row } from "react-bootstrap";
+import React from "react";
+import ListView from "./components/ListView/listView";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
 import "./index.css";
 
 function MyApp() {
-  const [input, setInput] = useState("");
-  const [todos, setTodos] = useState([]);
-
   return (
-    <>
-      <Row>
-        <div className="header">
-          <Header/>
-        </div>
-      </Row>
-      <Row>
-        <div className="container">
-          <div className="app-wrapper">
-            <div>
-              <List
-                input={input}
-                setInput={setInput}
-                todos={todos}
-                setTodos={setTodos}
-              />
-            </div>
-            <div>
-              <Todo todos={todos} setTodos={setTodos} />
-            </div>
-          </div>
-        </div>
-      </Row>
-      <Row>
-        <div className="footer-col col-md-4">
-          <Footer/>
-        </div>
-      </Row>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/listview" element={<ListView />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default MyApp;
