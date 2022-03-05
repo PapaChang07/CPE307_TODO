@@ -4,6 +4,11 @@ On top of this it is displayed nicley and you can edit a task explicitley and ea
 # UI PROTOTYPE (March 3rd 2022)
 https://www.figma.com/file/QBv49W4c3lSvG3bTsCMRVE/2Do-List?node-id=0%3A1
 
+# CI Server For Project
+[Node.js CI](https://github.com/PapaChang07/CPE307_TODO/actions/workflows/backend.yml/badge.svg)
+https://github.com/PapaChang07/CPE307_TODO/actions
+
+
 # CPE307_TODO
 # instructions to use prettier and eslint
 
