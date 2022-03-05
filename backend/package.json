@@ -4,7 +4,7 @@
   "description": "",
   "main": "backend_with_db.js",
   "scripts": {
-    "test": "jest  --runInBand  --forceExit & prettier --check . & jest --coverage --forceExit",
+    "test": "jest --coverage --forceExit --forceExit & prettier --check .  ",
     "dev": "nodemon backend_with_db.js",
     "start": "node backend_with_db.js"
   },
