@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
+import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  useLocation
+} from "react-router-dom";
 //import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
@@ -7,7 +13,10 @@ import "./list.css";
 
 const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
   const [mytasks, setTasks] = useState([]);
+  const {state} = useLocation();
+  const {username}  = state;
   const [user, setUser] = useState("");
+
 
   useEffect(() => {
     if (editTodo) {
@@ -90,7 +99,9 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
     fetchAll().then((result) => {
       if (result) {
         let tasks = [];
-
+        
+        console.log(username)
+        
         let user = result.find((person) => person.name === "Juan");
         console.log(user);
         let items = user.tasks.map((task) => (

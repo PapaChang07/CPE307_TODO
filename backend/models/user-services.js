@@ -115,7 +115,6 @@ exports.getUsers = getUsers;
 exports.updateUser = updateUser;
 exports.addUser = addUser;
 
-exports.deleteByID = deleteByID;
 exports.findUserByUsernameAndPassword = findUserByUsernameAndPassword;
 exports.deleteByName = deleteByName;
 exports.getUser = getUser;

@@ -31,7 +31,13 @@ function Login() {
     // navigate("/listview");
     if (result === true) {
       console.log("correct!");
-      navigate("/listview");
+      console.log(user)
+      navigate( "/listview", 
+        {state: {
+          username : user 
+      },
+    }
+      );
     } else {
       console.log("wrong username and password");
       navigate("/");
