@@ -14,7 +14,11 @@ https://github.com/PapaChang07/CPE307_TODO/actions
 - https://cpe307-todo-frontend.herokuapp.com/
 - https://cpe307-todo-backend.herokuapp.com/
 
-# DEVelopment Setup
+# Development Setup
+- Clone the Github Repository
+- Change directory to the backend and run npm install
+- Change directory to frontend and run npm install
+- Run the backend and frontend seperatley using npm start (run the backend first)
 
 
 # instructions to use prettier and eslint
