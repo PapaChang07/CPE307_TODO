@@ -57,8 +57,8 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user  }
   async function updateCurrUser(user) {
     try {
       console.log(user);
-      // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
-      const response = await axios.put("http://localhost:5000/users", user);
+      const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
+      //const response = await axios.put("http://localhost:5000/users", user);
       console.log(response);
       return response.data;
     } catch (error) {

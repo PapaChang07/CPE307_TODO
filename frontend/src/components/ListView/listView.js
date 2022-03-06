@@ -21,8 +21,8 @@ function ListView() {
 
   async function fetchAll() {
     try {
-      //const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
-      const response = await axios.get("http://localhost:5000/users");
+      const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
+      //const response = await axios.get("http://localhost:5000/users");
       //console.log(response);
       return response.data.users_list;
     } catch (error) {
