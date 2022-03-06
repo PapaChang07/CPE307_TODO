@@ -58,8 +58,8 @@ const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
 
   async function updateCurrUser(user) {
     try {
-      // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
-      const response = await axios.put("http://localhost:5000/users", user);
+      const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
+      //const response = await axios.put("http://localhost:5000/users", user);
       return response.data;
     } catch (error) {
       //We're not handling errors. Just logging into the console.
