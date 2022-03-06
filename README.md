@@ -10,8 +10,13 @@ https://www.figma.com/file/QBv49W4c3lSvG3bTsCMRVE/2Do-List?node-id=0%3A1
 ![Node.js CI](https://github.com/PapaChang07/CPE307_TODO/actions/workflows/frontend.yml/badge.svg)
 ---
 https://github.com/PapaChang07/CPE307_TODO/actions
+# Heroku Deployment
+-
+https://cpe307-todo-frontend.herokuapp.com/
+-
+https://cpe307-todo-backend.herokuapp.com/
 
-#DEVelopment Setup
+# DEVelopment Setup
 
 
 # instructions to use prettier and eslint
