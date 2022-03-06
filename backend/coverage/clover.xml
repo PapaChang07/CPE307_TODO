@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1646522292760" clover="3.2.0">
-  <project timestamp="1646522292761" name="All files">
+<coverage generated="1646523709496" clover="3.2.0">
+  <project timestamp="1646523709497" name="All files">
     <metrics statements="43" coveredstatements="42" conditionals="12" coveredconditionals="10" methods="7" coveredmethods="6" elements="62" coveredelements="58" complexity="0" loc="43" ncloc="43" packages="1" files="2" classes="2"/>
     <file name="user-services.js" path="C:\Users\jhalu\OneDrive\Desktop\CSC 307\CPE307_TODO\backend\models\user-services.js">
       <metrics statements="39" coveredstatements="38" conditionals="12" coveredconditionals="10" methods="7" coveredmethods="6"/>
