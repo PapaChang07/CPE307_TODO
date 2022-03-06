@@ -14,7 +14,7 @@ https://github.com/PapaChang07/CPE307_TODO/actions
 - https://cpe307-todo-frontend.herokuapp.com/
 - https://cpe307-todo-backend.herokuapp.com/
 
-# Development Setup
+# Development Setup (Note In order to run locally you must comment out the get/ post call to heroku in List.js, listview.js, todo.js and login.js??  in favor of the local hosted backend).
 - Clone the Github Repository
 - Change directory to the backend and run npm install
 - Change directory to frontend and run npm install
