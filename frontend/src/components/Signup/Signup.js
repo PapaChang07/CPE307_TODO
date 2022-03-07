@@ -11,12 +11,14 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    updateCurrUser(user, password);
+  const handleSubmit =  async () => {
+    ret = await updateCurrUser(user, password);
     console.log("listview");
+    console.log(user)
+    console.log(ret.name)
     navigate("/listview", {
       state: {
-        username: user.trim(),
+        username: ret.name.trim(),
       },
     });
   };
