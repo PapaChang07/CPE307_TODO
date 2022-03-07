@@ -30,7 +30,7 @@ function Login() {
       navigate( "/listview", 
       {
           state : {
-            username: user
+            username: user.trim(),
           } 
       },
       );
