@@ -25,11 +25,14 @@ function Login() {
   async function updateCurrUser(user, password) {
     try {
       console.log(user, password);
-      // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
-      const response = await axios.post("http://localhost:5000/signup", {
-        name: user,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://cpe307-todo-backend.herokuapp.com/users",
+        { name: user, password: password }
+      );
+      //const response = await axios.post("http://localhost:5000/signup", {
+      //  name: user,
+      //  password: password,
+      //});
       console.log(response);
       return response.data;
     } catch (error) {
