@@ -11,6 +11,21 @@ function Login() {
 
   const navigate = useNavigate();
 
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    const state = await updateCurrUser(user, password);
+    if (state === true){
+      console.log("listview");
+      navigate("/listview");
+    }
+    else {
+      console.log("Username is already in use")
+      console.log("login");
+      navigate("/");
+    }
+    
+  }
   const handleSubmit = async () => {
     console.log("IN SUBMIT");
     updateCurrUser(user, password).then((result) => {
@@ -32,6 +47,7 @@ function Login() {
     });
 
     //console.log(ret.user)
+
   };
 
   const handleLogin = () => {
@@ -53,7 +69,7 @@ function Login() {
       //  password: password,
       //});
       console.log(response);
-      return response.data;
+      return true;
     } catch (error) {
       console.log("ERROR OCCURS");
       //We're not handling errors. Just logging into the console.
