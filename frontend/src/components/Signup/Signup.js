@@ -11,14 +11,16 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit =  async () => {
-    ret = await updateCurrUser(user, password);
+  const handleSubmit = async (e) => {
+    console.log("IN SUBMIT")
+    const ret =  await updateCurrUser(user, password) ;
     console.log("listview");
+    //console.log(ret.user)
     console.log(user)
     console.log(ret.name)
     navigate("/listview", {
       state: {
-        username: ret.name.trim(),
+        username: user.trim(),
       },
     });
   };
@@ -30,11 +32,13 @@ function Login() {
 
   async function updateCurrUser(user, password) {
     try {
+      console.log("UPDATE")
       console.log(user, password);
       const response = await axios.post(
         "https://cpe307-todo-backend.herokuapp.com/users",
         { name: user, password: password }
       );
+      console.log("AFTER POST")
       //const response = await axios.post("http://localhost:5000/signup", {
       //  name: user,
       //  password: password,
@@ -42,6 +46,7 @@ function Login() {
       console.log(response);
       return response.data;
     } catch (error) {
+      console.log("ERROR OCCURS")
       //We're not handling errors. Just logging into the console.
       console.log(error);
       return false;
