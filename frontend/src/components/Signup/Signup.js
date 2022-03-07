@@ -11,18 +11,30 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
     console.log("IN SUBMIT")
-    const ret =  await updateCurrUser(user, password) ;
-    console.log("listview");
-    //console.log(ret.user)
-    console.log(user)
-    console.log(ret.name)
-    navigate("/listview", {
-      state: {
-        username: user.trim(),
-      },
+    let ret =   updateCurrUser(user, password).then((result) => {
+      if (result) {
+        console.log("listview");
+        console.log(user)
+        console.log(result.name)  
+        console.log(result)
+        setUser(result)
+      }
+      else{
+
+      }
     });
+    console.log("USER BEFORE SWitch")
+    console.log(user)
+      navigate("/listview", {
+        state: {
+          username: user.trim(),
+        },
+      });
+  
+   
+    //console.log(ret.user)
   };
 
   const handleLogin = () => {
