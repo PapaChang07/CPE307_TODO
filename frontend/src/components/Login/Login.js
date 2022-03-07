@@ -43,8 +43,15 @@ function Login() {
 
   async function fetchAll() {
     try {
+      //const response = await axios.get(
+      //  "http://localhost:5000/login?name=" +
+      //   user +
+      //    "&password=" +
+      //    password +
+      //    ""
+      //);
       const response = await axios.get(
-        "http://localhost:5000/login?name=" +
+        "https://cpe307-todo-backend.herokuapp.com/login?name=" +
           user +
           "&password=" +
           password +
