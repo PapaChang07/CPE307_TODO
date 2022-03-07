@@ -74,10 +74,12 @@ function Login() {
       //    ""
       //);
       const response = await axios.get(
-        "https://cpe307-todo-backend.herokuapp.com/users?name=" + user + ""
+        "https://cpe307-todo-backend.herokuapp.com/users" 
       );
+      let username = response.data.users_list.find((person) => person.name === user.trim());
       console.log(response.data);
-      if (response.data.users_list == null) {
+      console.log(username);
+      if (username == null) {
         console.log("hmmmm");
         return false;
       }
