@@ -78,9 +78,16 @@ app.post("/users", async (req, res) => {
 
 app.post("/signup", async (req, res) => {
   const user = req.body;
-  const savedUser = await userServices.addUser(user);
-  if (savedUser) res.status(201).send(savedUser);
-  else res.status(500).end();
+  console.log(user);
+  result = await userServices.findUser(user);
+  if (result.length == 0) {
+    const savedUser = await userServices.addUser(user);
+    if (savedUser) res.status(201).send(savedUser);
+    else res.status(500).end();
+  } else {
+    console.log("Username is already in use");
+    res.status(400).send(false);
+  }
 });
 
 app.put("/users", async (req, res) => {

@@ -63,6 +63,7 @@ async function addUser(user) {
   try {
     const userToAdd = new userModel(user);
     const savedUser = await userToAdd.save();
+    console.log(savedUser);
     return savedUser;
   } catch (error) {
     console.log(error);
@@ -96,8 +97,8 @@ async function deleteByName(name) {
   }
 }
 
-async function findUserByName(name) {
-  return await userModel.find({ name: name });
+async function findUser(user) {
+  return await userModel.find({ name: user.name });
 }
 
 async function findUserByJob(password) {
@@ -115,3 +116,4 @@ exports.addUser = addUser;
 exports.findUserByUsernameAndPassword = findUserByUsernameAndPassword;
 exports.deleteByName = deleteByName;
 exports.getUser = getUser;
+exports.findUser = findUser;
