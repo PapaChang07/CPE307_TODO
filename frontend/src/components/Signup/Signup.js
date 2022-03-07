@@ -18,10 +18,19 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    updateCurrUser(user, password)
-    console.log("listview");
-    navigate("/listview");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const state = await updateCurrUser(user, password);
+    if (state === true){
+      console.log("listview");
+      navigate("/listview");
+    }
+    else {
+      console.log("Username is already in use")
+      console.log("login");
+      navigate("/");
+    }
+    
   };
 
   const handleLogin = () => {
@@ -35,7 +44,7 @@ function Login() {
       // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
       const response = await axios.post("http://localhost:5000/signup", {"name": user, "password": password});
       console.log(response);
-      return response.data;
+      return true;
     } catch (error) {
       //We're not handling errors. Just logging into the console.
       console.log(error);

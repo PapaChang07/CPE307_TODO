@@ -49,8 +49,10 @@ async function getUser(name) {
 async function addUser(user) {
   try {
     const userToAdd = new userModel(user);
-    console.log(userToAdd);
+    console.log("WE CHILLING IN THE RITZ CAR");
     const savedUser = await userToAdd.save();
+    console.log(savedUser);
+    console.log("NAH WE WITH THE BOIS");
     return savedUser;
   } catch (error) {
     console.log(error);
@@ -84,8 +86,8 @@ async function deleteByName(name) {
   }
 }
 
-async function findUserByName(name) {
-  return await userModel.find({ name: name });
+async function findUser(user) {
+  return await userModel.find({ "name": user.name});
 }
 
 exports.getUsers = getUsers;
@@ -93,3 +95,4 @@ exports.updateUser = updateUser;
 exports.addUser = addUser;
 exports.deleteByName = deleteByName;
 exports.getUser = getUser;
+exports.findUser = findUser;
