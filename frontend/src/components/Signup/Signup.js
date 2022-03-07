@@ -14,7 +14,11 @@ function Login() {
   const handleSubmit = () => {
     updateCurrUser(user, password);
     console.log("listview");
-    navigate("/listview");
+    navigate("/listview", {
+      state: {
+        username: user.trim(),
+      },
+    });
   };
 
   const handleLogin = () => {
