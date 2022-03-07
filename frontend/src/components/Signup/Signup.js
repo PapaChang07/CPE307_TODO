@@ -26,6 +26,7 @@ function Login() {
         });
       } else {
         console.log("Username is already in use");
+        console.log("PICK ANOTHER")
         console.log("login");
         navigate("/");
       }
