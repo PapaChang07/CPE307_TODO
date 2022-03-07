@@ -1,18 +1,43 @@
 import React from "react";
+import axios from "axios";
 
-const Todo = ({ todos, setTodos, setEditTodo }) => {
+const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
   const handleComplete = (todo) => {
-    setTodos(
-      todos.map((item) => {
-        if (item.id === todo.id) {
-          return { ...item, completed: !item.completed };
-        }
+    console.log(todo);
+    console.log(todos);
+    let changedTodos = [];
+    for (let x in todos) {
+      if (todo.id === todos[x].id) {
+        console.log(todo.id);
+        changedTodos.push({
+          id: todos[x].id,
+          title: todos[x].title,
+          completed: !todo.completed,
+        });
+      } else {
+        changedTodos.push({
+          id: todos[x].id,
+          title: todos[x].title,
+          completed: todos[x].completed,
+        });
+      }
+    }
+    console.log(changedTodos);
 
-        return item;
-      })
-    );
+    setTodos(changedTodos);
+    let filtered = [];
+    for (let x in changedTodos) {
+      filtered.push({
+        body: changedTodos[x].title,
+        completed: changedTodos[x].completed,
+      });
+    }
+    user.tasks = filtered;
+    setUser(user);
+    updateCurrUser(user);
   };
 
+ 
   const handleEdit = ({ id }) => {
     const findTodo = todos.find((todo) => todo.id === id);
     setEditTodo(findTodo);
@@ -20,7 +45,28 @@ const Todo = ({ todos, setTodos, setEditTodo }) => {
 
   const handleDelete = ({ id }) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+    let filtered = todos.filter((todo) => todo.id !== id);
+    let newTodos = [];
+    for (let x in filtered) {
+      newTodos.push({ body: filtered[x].title, completed: filtered[x].completed });
+    }
+
+    user.tasks = newTodos;
+    setUser(user);
+    updateCurrUser(user);
   };
+
+  async function updateCurrUser(user) {
+    try {
+      // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
+      const response = await axios.put("http://localhost:5000/users", user);
+      return response.data;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
 
   return (
     <div>

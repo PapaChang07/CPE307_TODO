@@ -17,9 +17,7 @@ app.get("/", (req, res) => {
 
 app.get("/users", async (req, res) => {
   const name = req.query["name"];
-  console.log(typeof name);
   const password = req.query["password"];
-  console.log(typeof password);
   try {
     const result = await userServices.getUsers(name, password);
     res.send({ users_list: result });
@@ -64,7 +62,6 @@ app.post("/signup", async (req, res) => {
 
 app.put("/users", async (req, res) => {
   const user = req.body;
-  console.log("BACKEND");
   const savedUser = await userServices.updateUser(user);
   if (savedUser) res.status(201).send(savedUser);
   else res.status(500).end();

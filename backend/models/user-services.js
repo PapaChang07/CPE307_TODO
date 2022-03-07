@@ -49,10 +49,8 @@ async function getUser(name) {
 async function addUser(user) {
   try {
     const userToAdd = new userModel(user);
-    console.log("WE CHILLING IN THE RITZ CAR");
     const savedUser = await userToAdd.save();
     console.log(savedUser);
-    console.log("NAH WE WITH THE BOIS");
     return savedUser;
   } catch (error) {
     console.log(error);

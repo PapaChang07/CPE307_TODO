@@ -7,9 +7,9 @@ name: frontend CI
 
 on:
   push:
-    branches: [CImain]
+    branches: [main]
   pull_request:
-    branches: [CImain]
+    branches: [main]
 
 defaults:
   run:
