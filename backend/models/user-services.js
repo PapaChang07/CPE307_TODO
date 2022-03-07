@@ -63,7 +63,6 @@ async function findUserByUsernameAndPassword(name, password){
 async function addUser(user) {
   try {
     const userToAdd = new userModel(user);
-    console.log(userToAdd);
     const savedUser = await userToAdd.save();
     return savedUser;
   } catch (error) {

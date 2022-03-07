@@ -28,12 +28,12 @@ it("get a user using a valid  username", async () => {
     name: "Yvonne",
     password: "tacocatttt",
     tasks: [
-      { flag: true, date: "2/11/2022", imp: 900, body: "take trash out" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "go to the mall" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "celebrate" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "get code to work" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "take a dump" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "go on a date" },
+      { body: "take trash out", completed: true },
+      { body: "go to the mall", completed: false },
+      { body: "celebrate", completed: true },
+      { body: "get code to work", completed: false },
+      { body: "take a dump", completed: false },
+      { body: "go on a date", completed: false },
     ],
   };
 
@@ -60,18 +60,17 @@ it("get a list of all users", async () => {
 it("test to get a single user", async () => {
   const name = "Yvonne";
   const res = await myFunctions.getUser(name);
-  console.log(res);
   const user = {
     _id: { $oid: "6206ceae0f45b02c67ba888b" },
     name: "Yvonne",
     password: "tacocatttt",
     tasks: [
-      { flag: true, date: "2/11/2022", imp: 900, body: "take trash out" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "go to the mall" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "celebrate" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "get code to work" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "take a dump" },
-      { flag: true, date: "2/11/2022", imp: 900, body: "go on a date" },
+      { body: "take trash out", completed: true },
+      { body: "go to the mall", completed: false },
+      { body: "celebrate", completed: true },
+      { body: "get code to work", completed: false },
+      { body: "take a dump", completed: false },
+      { body: "go on a date", completed: false },
     ],
   };
   expect(res.name).toEqual(user.name);
@@ -117,7 +116,6 @@ it("test update task", async () => {
     body: "eat hambuuger",
   });
   const res = await myFunctions.updateUser(person);
-  console.log(res);
 
   expect(res.name).toEqual(user.name);
   expect(res.tasks).toEqual(JimbosUpdatedTasks);
