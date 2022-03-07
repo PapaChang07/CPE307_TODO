@@ -45,8 +45,8 @@ function ListView() {
         user = result.find((person) => person.name === username.trim());
         console.log(username.trim() === "James");
         console.log(user);
-        if (user === undefined ){
-          user = {name: username, password: "hellp", tasks: []}
+        if (user === undefined) {
+          user = { name: username, password: "hellp", tasks: [] };
         }
         for (let x in user.tasks) {
           items.push({
