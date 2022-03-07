@@ -11,7 +11,8 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+
+  const handleSignUp = async (e) => {
     e.preventDefault();
     const state = await updateCurrUser(user, password);
     if (state === true){
@@ -24,6 +25,29 @@ function Login() {
       navigate("/");
     }
     
+  }
+  const handleSubmit = async () => {
+    console.log("IN SUBMIT");
+    updateCurrUser(user, password).then((result) => {
+      if (result) {
+        console.log("listview");
+        console.log(user);
+        console.log(result.name);
+        console.log(result);
+        setUser(result);
+      } else {
+      }
+    });
+    console.log("USER BEFORE SWitch");
+    console.log(user);
+    navigate("/listview", {
+      state: {
+        username: user.trim(),
+      },
+    });
+
+    //console.log(ret.user)
+
   };
 
   const handleLogin = () => {
@@ -33,15 +57,21 @@ function Login() {
 
   async function updateCurrUser(user, password) {
     try {
+      console.log("UPDATE");
       console.log(user, password);
-      // const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
-      const response = await axios.post("http://localhost:5000/signup", {
-        name: user,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://cpe307-todo-backend.herokuapp.com/users",
+        { name: user, password: password }
+      );
+      console.log("AFTER POST");
+      //const response = await axios.post("http://localhost:5000/signup", {
+      //  name: user,
+      //  password: password,
+      //});
       console.log(response);
       return true;
     } catch (error) {
+      console.log("ERROR OCCURS");
       //We're not handling errors. Just logging into the console.
       console.log(error);
       return false;

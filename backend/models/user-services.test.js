@@ -60,7 +60,6 @@ it("get a list of all users", async () => {
 it("test to get a single user", async () => {
   const name = "Yvonne";
   const res = await myFunctions.getUser(name);
-  console.log(res);
   const user = {
     _id: { $oid: "6206ceae0f45b02c67ba888b" },
     name: "Yvonne",
@@ -117,7 +116,6 @@ it("test update task", async () => {
     body: "eat hambuuger",
   });
   const res = await myFunctions.updateUser(person);
-  console.log(res);
 
   expect(res.name).toEqual(user.name);
   expect(res.tasks).toEqual(JimbosUpdatedTasks);
