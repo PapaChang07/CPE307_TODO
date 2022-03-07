@@ -2,20 +2,14 @@ import React from "react";
 import { useEffect } from 'react';
 import { Form, Button } from "react-bootstrap";
  
-import {
-  useLocation
-} from "react-router-dom";
 //import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import "./list.css";
 
  
-const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
-  const [mytasks, setTasks] = useState([]);
-  const {state} = useLocation();
-  const {username}  = state ? state : "Juan";
-  const [user, setUser] = useState("");
+const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user, setUser }) => {
+  
  
 
 
