@@ -7,7 +7,7 @@ https://www.figma.com/file/QBv49W4c3lSvG3bTsCMRVE/2Do-List?node-id=0%3A1
 
 # Diagrams
 - https://github.com/PapaChang07/CPE307_TODO/wiki
-- -
+---
 # CI Server For Project
 ![Node.js CI](https://github.com/PapaChang07/CPE307_TODO/actions/workflows/backend.yml/badge.svg)
 ![Node.js CI](https://github.com/PapaChang07/CPE307_TODO/actions/workflows/frontend.yml/badge.svg)
