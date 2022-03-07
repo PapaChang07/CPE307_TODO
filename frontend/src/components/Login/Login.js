@@ -3,10 +3,8 @@ import { Container, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import "./Login.css";
- 
+
 import axios from "axios";
- 
- 
 
 function Login() {
   const [user, setUser] = useState("");
@@ -26,14 +24,12 @@ function Login() {
     // navigate("/listview");
     if (result === true) {
       console.log("correct!");
-      console.log(user)
-      navigate( "/listview", 
-      {
-          state : {
-            username: user.trim(),
-          } 
-      },
-      );
+      console.log(user);
+      navigate("/listview", {
+        state: {
+          username: user.trim(),
+        },
+      });
     } else {
       console.log("wrong username and password");
       navigate("/");
@@ -47,10 +43,16 @@ function Login() {
 
   async function fetchAll() {
     try {
-      const response = await axios.get('http://localhost:5000/login?name='+ user +'&password=' + password +'');
+      const response = await axios.get(
+        "http://localhost:5000/login?name=" +
+          user +
+          "&password=" +
+          password +
+          ""
+      );
       console.log(response.data.users_list);
-      if (response.data.users_list == null){
-        console.log("hmmmm")
+      if (response.data.users_list == null) {
+        console.log("hmmmm");
         return false;
       }
       return true;
@@ -60,7 +62,6 @@ function Login() {
       return false;
     }
   }
-
 
   const handleSignUp = (password) => {
     console.log("signup");

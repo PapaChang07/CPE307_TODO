@@ -1,18 +1,22 @@
 import React from "react";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
- 
+
 //import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import "./list.css";
 
- 
-const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user, setUser }) => {
-  
- 
-
-
+const List = ({
+  input,
+  setInput,
+  todos,
+  setTodos,
+  editTodo,
+  setEditTodo,
+  user,
+  setUser,
+}) => {
   useEffect(() => {
     if (editTodo) {
       setInput(editTodo.title);
@@ -59,12 +63,13 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user, s
     }
   };
 
- 
-
   async function updateCurrUser(user) {
     try {
       console.log(user);
-      const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
+      const response = await axios.put(
+        "https://cpe307-todo-backend.herokuapp.com/users",
+        user
+      );
       //const response = await axios.put("http://localhost:5000/users", user);
       console.log(response);
       return response.data;
@@ -74,8 +79,6 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo, user, s
       return false;
     }
   }
-
- 
 
   //const { handleSubmit } = useForm();
 

@@ -37,7 +37,6 @@ const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
     updateCurrUser(user);
   };
 
- 
   const handleEdit = ({ id }) => {
     const findTodo = todos.find((todo) => todo.id === id);
     setEditTodo(findTodo);
@@ -48,7 +47,10 @@ const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
     let filtered = todos.filter((todo) => todo.id !== id);
     let newTodos = [];
     for (let x in filtered) {
-      newTodos.push({ body: filtered[x].title, completed: filtered[x].completed });
+      newTodos.push({
+        body: filtered[x].title,
+        completed: filtered[x].completed,
+      });
     }
 
     user.tasks = newTodos;
@@ -58,7 +60,10 @@ const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
 
   async function updateCurrUser(user) {
     try {
-      const response = await axios.put("https://cpe307-todo-backend.herokuapp.com/users", user);
+      const response = await axios.put(
+        "https://cpe307-todo-backend.herokuapp.com/users",
+        user
+      );
       //const response = await axios.put("http://localhost:5000/users", user);
       return response.data;
     } catch (error) {
