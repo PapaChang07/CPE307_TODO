@@ -108,6 +108,7 @@ function Login() {
               Login
             </Button>
           </form>
+          <br></br>
           <form id="submit" onSubmit={handleSignUp}>
             <Button className="button-signup" type="submit">
               Don't have an account? Sign Up
