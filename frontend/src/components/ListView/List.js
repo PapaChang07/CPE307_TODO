@@ -14,7 +14,7 @@ import "./list.css";
 const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
   const [mytasks, setTasks] = useState([]);
   const {state} = useLocation();
-  const {username}  = state;
+  const {username}  = state ? state : "Juan";
   const [user, setUser] = useState("");
 
 
@@ -102,7 +102,7 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
         
         console.log(username)
         
-        let user = result.find((person) => person.name === "Juan");
+        let user = result.find((person) => person.name === username);
         console.log(user);
         let items = user.tasks.map((task) => (
           <li className="list">{task.body}</li>

@@ -33,10 +33,11 @@ function Login() {
       console.log("correct!");
       console.log(user)
       navigate( "/listview", 
-        {state: {
-          username : user 
+      {
+          state : {
+            username: user
+          } 
       },
-    }
       );
     } else {
       console.log("wrong username and password");
