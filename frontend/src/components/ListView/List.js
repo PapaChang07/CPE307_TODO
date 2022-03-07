@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-import ReactDOM from "react-dom";
 import {
-  BrowserRouter as Router,
-  Switch,
   useLocation
 } from "react-router-dom";
 //import { useForm } from "react-hook-form";
@@ -127,6 +124,7 @@ const List = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
         }
       }
     });
+     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //const { handleSubmit } = useForm();
