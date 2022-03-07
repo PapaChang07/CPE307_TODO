@@ -7,11 +7,14 @@ import { Row } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import "./list.css";
+import { useLocation } from "react-router-dom";
 
 function ListView() {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
   const [editTodo, setEditTodo] = useState(null);
+  const { state } = useLocation();
+  const { username } = state ? state : "Juan";
   const [user, setUser] = useState("");
   const [myTasks, setTasks] = useState([]);
 
@@ -21,7 +24,9 @@ function ListView() {
 
   async function fetchAll() {
     try {
-      const response = await axios.get("https://cpe307-todo-backend.herokuapp.com/users");
+      const response = await axios.get(
+        "https://cpe307-todo-backend.herokuapp.com/users"
+      );
       //const response = await axios.get("http://localhost:5000/users");
       //console.log(response);
       return response.data.users_list;
@@ -36,7 +41,10 @@ function ListView() {
       if (result) {
         let tasks = [];
         let items = [];
-        let user = result.find((person) => person.name === "Ryab");
+        let user = "";
+        user = result.find((person) => person.name === username.trim());
+        console.log(username.trim() === "James");
+        console.log(user);
         for (let x in user.tasks) {
           items.push({
             body: user.tasks[x].body,
