@@ -98,7 +98,7 @@ async function deleteByName(name) {
 }
 
 async function findUser(user) {
-  return await userModel.find({ "name": user.name});
+  return await userModel.find({ name: user.name });
 }
 
 async function findUserByJob(password) {

@@ -11,43 +11,29 @@ function Login() {
 
   const navigate = useNavigate();
 
-
   const handleSignUp = async (e) => {
     e.preventDefault();
-    const state = await updateCurrUser(user, password);
-    if (state === true){
-      console.log("listview");
-      navigate("/listview");
-    }
-    else {
-      console.log("Username is already in use")
+    const state = await fetchAll(user, password);
+    console.log(state);
+    if (state === false) {
+      const ret = await updateCurrUser(user, password);
+      if (ret === true) {
+        console.log("listview");
+        navigate("/listview", {
+          state: {
+            username: user.trim(),
+          },
+        });
+      } else {
+        console.log("Username is already in use");
+        console.log("login");
+        navigate("/");
+      }
+    } else {
+      console.log("Username is already in use");
       console.log("login");
       navigate("/");
     }
-    
-  }
-  const handleSubmit = async () => {
-    console.log("IN SUBMIT");
-    updateCurrUser(user, password).then((result) => {
-      if (result) {
-        console.log("listview");
-        console.log(user);
-        console.log(result.name);
-        console.log(result);
-        setUser(result);
-      } else {
-      }
-    });
-    console.log("USER BEFORE SWitch");
-    console.log(user);
-    navigate("/listview", {
-      state: {
-        username: user.trim(),
-      },
-    });
-
-    //console.log(ret.user)
-
   };
 
   const handleLogin = () => {
@@ -78,6 +64,31 @@ function Login() {
     }
   }
 
+  async function fetchAll() {
+    try {
+      //const response = await axios.get(
+      //  "http://localhost:5000/login?name=" +
+      //   user +
+      //    "&password=" +
+      //    password +
+      //    ""
+      //);
+      const response = await axios.get(
+        "https://cpe307-todo-backend.herokuapp.com/users?name=" + user + ""
+      );
+      console.log(response.data);
+      if (response.data.users_list == null) {
+        console.log("hmmmm");
+        return false;
+      }
+      return true;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
+
   return (
     <>
       <Row className="justify-content-md-center">
@@ -85,7 +96,7 @@ function Login() {
           <div className="L">
             <h1 className="login-header">Signup</h1>
             <br></br>
-            <form id="login" onSubmit={handleSubmit}>
+            <form id="login" onSubmit={handleSignUp}>
               <Form.Group controlId="username">
                 <Form.Control
                   type="text"
