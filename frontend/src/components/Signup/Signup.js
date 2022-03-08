@@ -45,7 +45,7 @@ function Login() {
     try {
       //console.log("UPDATE");
       //console.log(user, password);
-      const response = await axios.post(
+      let response = await axios.post(
         "https://cpe307-todo-backend.herokuapp.com/users",
         { name: user, password: password }
       );
@@ -55,7 +55,11 @@ function Login() {
       //  password: password,
       //});
       //console.log(response);
-      return true;
+      if (response) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (error) {
       console.log("ERROR OCCURS");
       //We're not handling errors. Just logging into the console.
@@ -74,9 +78,11 @@ function Login() {
       //    ""
       //);
       const response = await axios.get(
-        "https://cpe307-todo-backend.herokuapp.com/users" 
+        "https://cpe307-todo-backend.herokuapp.com/users"
       );
-      let username = response.data.users_list.find((person) => person.name === user.trim());
+      let username = response.data.users_list.find(
+        (person) => person.name === user.trim()
+      );
       //console.log(response.data);
       //console.log(username);
       if (username == null) {
