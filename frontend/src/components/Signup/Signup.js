@@ -14,7 +14,7 @@ function Login() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     const state = await fetchAll(user, password);
-    console.log(state);
+    //console.log(state);
     if (state === false) {
       const ret = await updateCurrUser(user, password);
       if (ret === true) {
@@ -43,18 +43,18 @@ function Login() {
 
   async function updateCurrUser(user, password) {
     try {
-      console.log("UPDATE");
-      console.log(user, password);
+      //console.log("UPDATE");
+      //console.log(user, password);
       const response = await axios.post(
         "https://cpe307-todo-backend.herokuapp.com/users",
         { name: user, password: password }
       );
-      console.log("AFTER POST");
+      //console.log("AFTER POST");
       //const response = await axios.post("http://localhost:5000/signup", {
       //  name: user,
       //  password: password,
       //});
-      console.log(response);
+      //console.log(response);
       return true;
     } catch (error) {
       console.log("ERROR OCCURS");
@@ -77,10 +77,10 @@ function Login() {
         "https://cpe307-todo-backend.herokuapp.com/users" 
       );
       let username = response.data.users_list.find((person) => person.name === user.trim());
-      console.log(response.data);
-      console.log(username);
+      //console.log(response.data);
+      //console.log(username);
       if (username == null) {
-        console.log("hmmmm");
+        //console.log("hmmmm");
         return false;
       }
       return true;

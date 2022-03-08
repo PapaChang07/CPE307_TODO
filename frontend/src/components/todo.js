@@ -3,12 +3,12 @@ import axios from "axios";
 
 const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
   const handleComplete = (todo) => {
-    console.log(todo);
-    console.log(todos);
+    //console.log(todo);
+    //console.log(todos);
     let changedTodos = [];
     for (let x in todos) {
       if (todo.id === todos[x].id) {
-        console.log(todo.id);
+        //console.log(todo.id);
         changedTodos.push({
           id: todos[x].id,
           title: todos[x].title,
@@ -22,7 +22,7 @@ const Todo = ({ todos, setTodos, setEditTodo, user, setUser }) => {
         });
       }
     }
-    console.log(changedTodos);
+    //console.log(changedTodos);
 
     setTodos(changedTodos);
     let filtered = [];

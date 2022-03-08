@@ -38,7 +38,7 @@ const List = ({
       newTodos.push({ body: newTodo[x].title, completed: todos[x].completed });
     }
     user.tasks = newTodos;
-    console.log(newTodos);
+    //console.log(newTodos);
     updateCurrUser(user);
     setTodos(newTodo);
     setEditTodo("");
@@ -55,7 +55,7 @@ const List = ({
       }
       newTodos.push(newTsk);
       user.tasks = newTodos;
-      console.log(newTodos);
+      //console.log(newTodos);
       updateCurrUser(user);
       setInput("");
     } else {
@@ -65,13 +65,13 @@ const List = ({
 
   async function updateCurrUser(user) {
     try {
-      console.log(user);
+      //console.log(user);
       const response = await axios.put(
         "https://cpe307-todo-backend.herokuapp.com/users",
         user
       );
       //const response = await axios.put("http://localhost:5000/users", user);
-      console.log(response);
+      //console.log(response);
       return response.data;
     } catch (error) {
       //We're not handling errors. Just logging into the console.

@@ -15,16 +15,13 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("IN HANDLESUBMIT");
     const result = await fetchAll();
-    console.log("IN FETCHALL: " + result);
     // setTest(result);
     // return result;
 
     // navigate("/listview");
     if (result === true) {
-      console.log("correct!");
-      console.log(user);
+      //console.log("USER " + user);
       navigate("/listview", {
         state: {
           username: user.trim(),
@@ -37,7 +34,6 @@ function Login() {
     setUser("");
     setPassword("");
 
-    console.log("AFTER HANDLESUBMIT");
     // console.log(fetchAll().then(result => console.log(result))).catch( err => console.log(err));
   };
 
@@ -57,10 +53,8 @@ function Login() {
           password +
           ""
       );
-      console.log(response.data.users_list);
       if (response.data.users_list == null) {
-        console.log("hmmmm");
-        return false;
+         return false;
       }
       return true;
     } catch (error) {
