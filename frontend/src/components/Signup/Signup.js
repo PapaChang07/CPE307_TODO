@@ -25,13 +25,11 @@ function Login() {
           },
         });
       } else {
-        alert("Account with username already exists");
         console.log("Username is already in use");
         console.log("login");
         navigate("/");
       }
     } else {
-      alert("Account with username already exists");
       console.log("Username is already in use");
       console.log("login");
       navigate("/");

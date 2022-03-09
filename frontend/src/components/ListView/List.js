@@ -65,7 +65,7 @@ const List = ({
 
   async function updateCurrUser(user) {
     try {
-      console.log(user);
+      //console.log(user);
       const response = await axios.put(
         "https://cpe307-todo-backend.herokuapp.com/users",
         user
