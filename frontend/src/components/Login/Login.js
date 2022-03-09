@@ -28,6 +28,7 @@ function Login() {
         },
       });
     } else {
+      alert("Username or password is incorrect.");
       console.log("wrong username and password");
       navigate("/");
     }

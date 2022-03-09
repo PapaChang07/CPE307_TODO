@@ -25,11 +25,13 @@ function Login() {
           },
         });
       } else {
+        alert("Username is already in use.");
         console.log("Username is already in use");
         console.log("login");
         navigate("/");
       }
     } else {
+      alert("Username is already in use.");
       console.log("Username is already in use");
       console.log("login");
       navigate("/");
