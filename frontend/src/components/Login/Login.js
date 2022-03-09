@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Alert} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
 import "./Login.css";
@@ -28,6 +28,7 @@ function Login() {
         },
       });
     } else {
+      alert("Username or password is incorrect.");
       console.log("wrong username and password");
       navigate("/");
     }
@@ -37,6 +38,20 @@ function Login() {
     // console.log(fetchAll().then(result => console.log(result))).catch( err => console.log(err));
   };
 
+  function AlertDismissible() {
+    const [show, setShow] = useState(true);
+    if (show) {
+      return (
+        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>Username or password is incorrect!</Alert.Heading>
+          <p>
+           Did you mean to sign up?
+          </p>
+        </Alert>
+      );
+    }
+    return <Button onClick={() => setShow(true)}>Show Alert</Button>;
+  }
   async function fetchAll() {
     try {
       //const response = await axios.get(
